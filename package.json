@@ -8,7 +8,7 @@
     "detailedscrape": "node ./detailedscrape.js",
     "combinedetails": "node ./combinedetails.js"
   },
-  "author": "bigfoott",
+  "author": "juniorvm",
   "license": "MIT",
   "dependencies": {
     "google-translate-api": "^2.3.0",
