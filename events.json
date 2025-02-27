@@ -1,0 +1,485 @@
+[
+    {
+        "eventID": "tornadus-thundurus-landorus-in-5-star-raid-battles-february-2025",
+        "name": "Tornadus, Thundurus, and Landorus in 5-star Raid Battles",
+        "eventType": "raid-battles",
+        "heading": "Raid Battles",
+        "link": "https://leekduck.com/events/tornadus-thundurus-landorus-in-5-star-raid-battles-february-2025/",
+        "image": "https://leekduck.com/assets/img/events/tornadus-thundurus-landorus-go-tour.jpg",
+        "start": "2025-02-26T10:00:00.000",
+        "end": "2025-02-27T10:00:00.000",
+        "extraData": {
+            "raidbattles": {
+                "bosses": [
+                    {
+                        "name": "Tornadus (Therian)",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_641_12.png",
+                        "canBeShiny": true
+                    },
+                    {
+                        "name": "Thundurus (Therian)",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_642_12.png",
+                        "canBeShiny": true
+                    },
+                    {
+                        "name": "Landorus (Therian)",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_645_12.png",
+                        "canBeShiny": true
+                    }
+                ],
+                "shinies": [
+                    {
+                        "name": "Tornadus (Therian)",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_641_12_shiny.png"
+                    },
+                    {
+                        "name": "Thundurus (Therian)",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_642_12_shiny.png"
+                    },
+                    {
+                        "name": "Landorus (Therian)",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_645_12_shiny.png"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "eventID": "raidhour20250227",
+        "name": "Reshiram Raid Hour",
+        "eventType": "raid-hour",
+        "heading": "Raid Hour",
+        "link": "https://leekduck.com/events/raidhour20250227/",
+        "image": "https://leekduck.com/assets/img/events/raidhour.jpg",
+        "start": "2025-02-27T18:00:00.000",
+        "end": "2025-02-27T19:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "pokemon-presents-25-x-go-tour-timed-research",
+        "name": "[Promo Code] Pokémon Presents ’25 x GO Tour Timed Research",
+        "eventType": "research",
+        "heading": "Research",
+        "link": "https://leekduck.com/events/pokemon-presents-25-x-go-tour-timed-research/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-02-27-pokemon-presents-25-x-go-tour-timed-research/pokemon-presents-25.jpg",
+        "start": "2025-02-27T10:00:00.000",
+        "end": "2025-02-27T20:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "pokemon-showcase-reshiram-2025-02-27",
+        "name": "Reshiram PokéStop Showcases",
+        "eventType": "pokestop-showcase",
+        "heading": "PokéStop Showcase",
+        "link": "https://leekduck.com/events/pokemon-showcase-reshiram-2025-02-27/",
+        "image": "https://leekduck.com/assets/img/events/pokestop-showcases-default.jpg",
+        "start": "2025-02-27T10:00:00.000",
+        "end": "2025-02-27T20:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "reshiram-in-5-star-raid-battles-february-2025",
+        "name": "Reshiram in 5-star Raid Battles",
+        "eventType": "raid-battles",
+        "heading": "Raid Battles",
+        "link": "https://leekduck.com/events/reshiram-in-5-star-raid-battles-february-2025/",
+        "image": "https://leekduck.com/assets/img/events/reshiram.jpg",
+        "start": "2025-02-27T10:00:00.000",
+        "end": "2025-02-28T10:00:00.000",
+        "extraData": {
+            "raidbattles": {
+                "bosses": [
+                    {
+                        "name": "Reshiram",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_643_00.png",
+                        "canBeShiny": true
+                    }
+                ],
+                "shinies": [
+                    {
+                        "name": "Reshiram",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_643_00_shiny.png"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "eventID": "raidhour20250228",
+        "name": "Zekrom Raid Hour",
+        "eventType": "raid-hour",
+        "heading": "Raid Hour",
+        "link": "https://leekduck.com/events/raidhour20250228/",
+        "image": "https://leekduck.com/assets/img/events/raidhour.jpg",
+        "start": "2025-02-28T18:00:00.000",
+        "end": "2025-02-28T19:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "eggs-pedition-access-february-2025",
+        "name": "Eggs-pedition Access: February",
+        "eventType": "ticketed-event",
+        "heading": "Ticketed Event",
+        "link": "https://leekduck.com/events/eggs-pedition-access-february-2025/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-02-01-eggs-pedition-access-february-2025/eggs-pedition-access-february.jpg",
+        "start": "2025-02-01T10:00:00.000",
+        "end": "2025-02-28T20:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "pokemon-showcase-zekrom-2025-02-28",
+        "name": "Zekrom PokéStop Showcases",
+        "eventType": "pokestop-showcase",
+        "heading": "PokéStop Showcase",
+        "link": "https://leekduck.com/events/pokemon-showcase-zekrom-2025-02-28/",
+        "image": "https://leekduck.com/assets/img/events/pokestop-showcases-default.jpg",
+        "start": "2025-02-28T10:00:00.000",
+        "end": "2025-02-28T20:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "zekrom-in-5-star-raid-battles-february-2025",
+        "name": "Zekrom in 5-star Raid Battles",
+        "eventType": "raid-battles",
+        "heading": "Raid Battles",
+        "link": "https://leekduck.com/events/zekrom-in-5-star-raid-battles-february-2025/",
+        "image": "https://leekduck.com/assets/img/events/zekrom2.jpg",
+        "start": "2025-02-28T10:00:00.000",
+        "end": "2025-03-01T10:00:00.000",
+        "extraData": {
+            "raidbattles": {
+                "bosses": [
+                    {
+                        "name": "Zekrom",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_644_00.png",
+                        "canBeShiny": true
+                    }
+                ],
+                "shinies": [
+                    {
+                        "name": "Zekrom",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_644_00_shiny.png"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "eventID": "road-to-unova",
+        "name": "Road to Unova",
+        "eventType": "event",
+        "heading": "Event",
+        "link": "https://leekduck.com/events/road-to-unova/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-02-24-road-to-unova/road-to-unova.jpg",
+        "start": "2025-02-24T10:00:00.000",
+        "end": "2025-03-01T10:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "pokemon-go-tour-unova-global-2025",
+        "name": "Pokémon GO Tour: Unova - Global",
+        "eventType": "pokemon-go-tour",
+        "heading": "Pokémon GO Tour",
+        "link": "https://leekduck.com/events/pokemon-go-tour-unova-global-2025/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-03-01-pokemon-go-tour-unova-global-2025/GOTourUnova2025-Global.jpg",
+        "start": "2025-03-01T10:00:00.000",
+        "end": "2025-03-02T18:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "go-tour-unova-timed-research-codes",
+        "name": "[Promo Code] Pokémon GO Tour Unova: Timed Research Codes",
+        "eventType": "research",
+        "heading": "Research",
+        "link": "https://leekduck.com/events/go-tour-unova-timed-research-codes/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-02-21-go-tour-unova-timed-research-codes/unova-trivia.jpg",
+        "start": "2025-02-21T09:00:00.000",
+        "end": "2025-03-02T21:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "shadow-regirock-in-shadow-raids-dual-destiny",
+        "name": "Shadow Regirock in Shadow Raids in February",
+        "eventType": "raid-battles",
+        "heading": "Raid Battles",
+        "link": "https://leekduck.com/events/shadow-regirock-in-shadow-raids-dual-destiny/",
+        "image": "https://leekduck.com/assets/img/events/events-default-img.jpg",
+        "start": "2025-02-03T06:00:00.000",
+        "end": "2025-03-02T22:00:00.000",
+        "extraData": {
+            "raidbattles": {
+                "bosses": [
+                    {
+                        "name": "Regirock",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_377_00.png",
+                        "canBeShiny": true
+                    }
+                ],
+                "shinies": [
+                    {
+                        "name": "Regirock",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_377_00_shiny.png"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "eventID": "max-mondays-2025-03-03",
+        "name": "Dynamax Beldum during Max Monday",
+        "eventType": "max-mondays",
+        "heading": "Max Mondays",
+        "link": "https://leekduck.com/events/max-mondays-2025-03-03/",
+        "image": "https://leekduck.com/assets/img/events/max-battles-kanto.jpg",
+        "start": "2025-03-03T18:00:00.000",
+        "end": "2025-03-03T19:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "february-max-battles-split-4-2025",
+        "name": "Max Battles - February 24 to March 3",
+        "eventType": "max-battles",
+        "heading": "Max Battles",
+        "link": "https://leekduck.com/events/february-max-battles-split-4-2025/",
+        "image": "https://leekduck.com/assets/img/events/power-spots-max-battles.jpg",
+        "start": "2025-02-24T21:00:00.000",
+        "end": "2025-03-03T21:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "season-17-dual-destiny",
+        "name": "Dual Destiny",
+        "eventType": "season",
+        "heading": "Season",
+        "link": "https://leekduck.com/events/season-17-dual-destiny/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2024/2024-12-03-season-17-dual-destiny/season-17-dual-destiny.jpg",
+        "start": "2024-12-03T10:00:00.000",
+        "end": "2025-03-04T10:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "mega-garchomp-in-mega-raids-february-2025",
+        "name": "Mega Garchomp in Mega Raids",
+        "eventType": "raid-battles",
+        "heading": "Raid Battles",
+        "link": "https://leekduck.com/events/mega-garchomp-in-mega-raids-february-2025/",
+        "image": "https://leekduck.com/assets/img/events/mega-default.jpg",
+        "start": "2025-02-17T10:00:00.000",
+        "end": "2025-03-04T10:00:00.000",
+        "extraData": {
+            "raidbattles": {
+                "bosses": [
+                    {
+                        "name": "Mega Garchomp",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/poke_capture_0445_001_mf_n_00000000_f_n.png",
+                        "canBeShiny": true
+                    }
+                ],
+                "shinies": [
+                    {
+                        "name": "Garchomp",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_445_00_shiny.png"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "eventID": "gbl-dual-destiny_great-league_master-league-mega-edition",
+        "name": "Great League and Master Premier | Dual Destiny",
+        "eventType": "go-battle-league",
+        "heading": "GO Battle League",
+        "link": "https://leekduck.com/events/gbl-dual-destiny_great-league_master-league-mega-edition/",
+        "image": "https://leekduck.com/assets/img/events/gobattle-greatleague-key.jpg",
+        "start": "2025-02-25T21:00:00.000Z",
+        "end": "2025-03-04T21:00:00.000Z",
+        "extraData": null
+    },
+    {
+        "eventID": "march-max-battles-split-1-2025",
+        "name": "Max Battles - March 3 to March 4",
+        "eventType": "max-battles",
+        "heading": "Max Battles",
+        "link": "https://leekduck.com/events/march-max-battles-split-1-2025/",
+        "image": "https://leekduck.com/assets/img/events/power-spots-max-battles.jpg",
+        "start": "2025-03-03T21:00:00.000",
+        "end": "2025-03-04T21:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "march-communityday2025",
+        "name": "Fuecoco Community Day",
+        "eventType": "community-day",
+        "heading": "Community Day",
+        "link": "https://leekduck.com/events/march-communityday2025/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-03-08-march-communityday2025/fuecoco-community-day.jpg",
+        "start": "2025-03-08T14:00:00.000",
+        "end": "2025-03-08T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "max-battle-weekend-march-2025",
+        "name": "Max Battle Weekend March 2025",
+        "eventType": "max-battles",
+        "heading": "Max Battles",
+        "link": "https://leekduck.com/events/max-battle-weekend-march-2025/",
+        "image": "https://leekduck.com/assets/img/events/events-default-img.jpg",
+        "start": "2025-03-08T06:00:00.000",
+        "end": "2025-03-09T20:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "catch-mastery-march-2025",
+        "name": "Catch Mastery March 2025",
+        "eventType": "event",
+        "heading": "Event",
+        "link": "https://leekduck.com/events/catch-mastery-march-2025/",
+        "image": "https://leekduck.com/assets/img/events/events-default-img.jpg",
+        "start": "2025-03-16T10:00:00.000",
+        "end": "2025-03-16T20:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "march-communitydayclassic2025",
+        "name": "Totodile Community Day Classic",
+        "eventType": "community-day",
+        "heading": "Community Day",
+        "link": "https://leekduck.com/events/march-communitydayclassic2025/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-03-22-march-communitydayclassic2025/totodile-cd-classic.jpg?v2",
+        "start": "2025-03-22T14:00:00.000",
+        "end": "2025-03-22T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "raid-day-march-2025",
+        "name": "Raid Day March 2025",
+        "eventType": "raid-day",
+        "heading": "Raid Day",
+        "link": "https://leekduck.com/events/raid-day-march-2025/",
+        "image": "https://leekduck.com/assets/img/events/events-default-img.jpg",
+        "start": "2025-03-23T14:00:00.000",
+        "end": "2025-03-23T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "research-day-march-2025",
+        "name": "Research Day March 2025",
+        "eventType": "research-day",
+        "heading": "Research Day",
+        "link": "https://leekduck.com/events/research-day-march-2025/",
+        "image": "https://leekduck.com/assets/img/events/events-default-img.jpg",
+        "start": "2025-03-29T14:00:00.000",
+        "end": "2025-03-29T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "raid-day-april-2025",
+        "name": "Raid Day April 2025",
+        "eventType": "raid-day",
+        "heading": "Raid Day",
+        "link": "https://leekduck.com/events/raid-day-april-2025/",
+        "image": "https://leekduck.com/assets/img/events/events-default-img.jpg",
+        "start": "2025-04-05T14:00:00.000",
+        "end": "2025-04-05T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "hatch-day-april-2025",
+        "name": "Hatch Day April 2025",
+        "eventType": "event",
+        "heading": "Event",
+        "link": "https://leekduck.com/events/hatch-day-april-2025/",
+        "image": "https://leekduck.com/assets/img/events/events-default-img.jpg",
+        "start": "2025-04-06T14:00:00.000",
+        "end": "2025-04-06T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "raid-day-april-2025-2",
+        "name": "Raid Day April 2025",
+        "eventType": "raid-day",
+        "heading": "Raid Day",
+        "link": "https://leekduck.com/events/raid-day-april-2025-2/",
+        "image": "https://leekduck.com/assets/img/events/events-default-img.jpg",
+        "start": "2025-04-13T14:00:00.000",
+        "end": "2025-04-13T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "max-battle-day-april-2025",
+        "name": "Max Battle Day April 2025",
+        "eventType": "max-battles",
+        "heading": "Max Battles",
+        "link": "https://leekduck.com/events/max-battle-day-april-2025/",
+        "image": "https://leekduck.com/assets/img/events/events-default-img.jpg",
+        "start": "2025-04-19T14:00:00.000",
+        "end": "2025-04-19T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "april-communityday2025",
+        "name": "April Community Day",
+        "eventType": "community-day",
+        "heading": "Community Day",
+        "link": "https://leekduck.com/events/april-communityday2025/",
+        "image": "https://leekduck.com/assets/img/events/cd-default.jpg",
+        "start": "2025-04-27T14:00:00.000",
+        "end": "2025-04-27T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "raid-day-may-2025",
+        "name": "Raid Day May 2025",
+        "eventType": "raid-day",
+        "heading": "Raid Day",
+        "link": "https://leekduck.com/events/raid-day-may-2025/",
+        "image": "https://leekduck.com/assets/img/events/events-default-img.jpg",
+        "start": "2025-05-03T14:00:00.000",
+        "end": "2025-05-03T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "may-communityday2025",
+        "name": "May Community Day",
+        "eventType": "community-day",
+        "heading": "Community Day",
+        "link": "https://leekduck.com/events/may-communityday2025/",
+        "image": "https://leekduck.com/assets/img/events/cd-default.jpg",
+        "start": "2025-05-11T14:00:00.000",
+        "end": "2025-05-11T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "shadow-raid-day-may-2025",
+        "name": "Shadow Raid Day May 2025",
+        "eventType": "raid-day",
+        "heading": "Raid Day",
+        "link": "https://leekduck.com/events/shadow-raid-day-may-2025/",
+        "image": "https://leekduck.com/assets/img/events/events-default-img.jpg",
+        "start": "2025-05-17T14:00:00.000",
+        "end": "2025-05-17T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "may-communitydayclassic2025",
+        "name": "May Community Day Classic",
+        "eventType": "community-day",
+        "heading": "Community Day",
+        "link": "https://leekduck.com/events/may-communitydayclassic2025/",
+        "image": "https://leekduck.com/assets/img/events/cd-default.jpg",
+        "start": "2025-05-24T14:00:00.000",
+        "end": "2025-05-24T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "max-battle-day-may-2025",
+        "name": "Max Battle Day May 2025",
+        "eventType": "max-battles",
+        "heading": "Max Battles",
+        "link": "https://leekduck.com/events/max-battle-day-may-2025/",
+        "image": "https://leekduck.com/assets/img/events/events-default-img.jpg",
+        "start": "2025-05-25T14:00:00.000",
+        "end": "2025-05-25T17:00:00.000",
+        "extraData": null
+    }
+]
