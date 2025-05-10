@@ -1,0 +1,246 @@
+[
+    {
+        "name": "Sneasel",
+        "tier": "Tier 1",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "dark",
+                "image": "https://leekduck.com/assets/img/types/dark.png"
+            },
+            {
+                "name": "ice",
+                "image": "https://leekduck.com/assets/img/types/ice.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 1107,
+                "max": 1172
+            },
+            "boosted": {
+                "min": 1384,
+                "max": 1465
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "foggy",
+                "image": "https://leekduck.com/assets/img/weather/foggy.png"
+            },
+            {
+                "name": "snowy",
+                "image": "https://leekduck.com/assets/img/weather/snowy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_215_00.png"
+    },
+    {
+        "name": "Klink",
+        "tier": "Tier 1",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "steel",
+                "image": "https://leekduck.com/assets/img/types/steel.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 502,
+                "max": 546
+            },
+            "boosted": {
+                "min": 628,
+                "max": 683
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "snowy",
+                "image": "https://leekduck.com/assets/img/weather/snowy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_599_00.png"
+    },
+    {
+        "name": "Pawniard",
+        "tier": "Tier 1",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "dark",
+                "image": "https://leekduck.com/assets/img/types/dark.png"
+            },
+            {
+                "name": "steel",
+                "image": "https://leekduck.com/assets/img/types/steel.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 765,
+                "max": 819
+            },
+            "boosted": {
+                "min": 957,
+                "max": 1024
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "foggy",
+                "image": "https://leekduck.com/assets/img/weather/foggy.png"
+            },
+            {
+                "name": "snowy",
+                "image": "https://leekduck.com/assets/img/weather/snowy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_624_00.png"
+    },
+    {
+        "name": "Nidoqueen",
+        "tier": "Tier 3",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "poison",
+                "image": "https://leekduck.com/assets/img/types/poison.png"
+            },
+            {
+                "name": "ground",
+                "image": "https://leekduck.com/assets/img/types/ground.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 1351,
+                "max": 1421
+            },
+            "boosted": {
+                "min": 1689,
+                "max": 1777
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "cloudy",
+                "image": "https://leekduck.com/assets/img/weather/cloudy.png"
+            },
+            {
+                "name": "sunnyclear",
+                "image": "https://leekduck.com/assets/img/weather/sunny.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm31.cROYAL_NOEVOLVE.icon.png"
+    },
+    {
+        "name": "Nidoking",
+        "tier": "Tier 3",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "poison",
+                "image": "https://leekduck.com/assets/img/types/poison.png"
+            },
+            {
+                "name": "ground",
+                "image": "https://leekduck.com/assets/img/types/ground.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 1395,
+                "max": 1466
+            },
+            "boosted": {
+                "min": 1743,
+                "max": 1833
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "cloudy",
+                "image": "https://leekduck.com/assets/img/weather/cloudy.png"
+            },
+            {
+                "name": "sunnyclear",
+                "image": "https://leekduck.com/assets/img/weather/sunny.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm34.cROYAL_NOEVOLVE.icon.png"
+    },
+    {
+        "name": "Tapu Fini",
+        "tier": "Tier 5",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "water",
+                "image": "https://leekduck.com/assets/img/types/water.png"
+            },
+            {
+                "name": "fairy",
+                "image": "https://leekduck.com/assets/img/types/fairy.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 1556,
+                "max": 1632
+            },
+            "boosted": {
+                "min": 1946,
+                "max": 2041
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "rainy",
+                "image": "https://leekduck.com/assets/img/weather/rainy.png"
+            },
+            {
+                "name": "cloudy",
+                "image": "https://leekduck.com/assets/img/weather/cloudy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm788.icon.png"
+    },
+    {
+        "name": "Mega Houndoom",
+        "tier": "Mega",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "dark",
+                "image": "https://leekduck.com/assets/img/types/dark.png"
+            },
+            {
+                "name": "fire",
+                "image": "https://leekduck.com/assets/img/types/fire.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 1432,
+                "max": 1505
+            },
+            "boosted": {
+                "min": 1790,
+                "max": 1882
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "foggy",
+                "image": "https://leekduck.com/assets/img/weather/foggy.png"
+            },
+            {
+                "name": "sunnyclear",
+                "image": "https://leekduck.com/assets/img/weather/sunny.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_229_51.png"
+    }
+]
