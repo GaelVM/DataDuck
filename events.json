@@ -1,0 +1,524 @@
+[
+    {
+        "eventID": "shadow-regigigigas-raid-day-may-2025",
+        "name": "Shadow Regigigas Raid Day",
+        "eventType": "raid-day",
+        "heading": "Raid Day",
+        "link": "https://leekduck.com/events/shadow-regigigigas-raid-day-may-2025/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-05-17-shadow-regigigigas-raid-day-may-2025/shadow-regigigas-raid-day.jpg",
+        "start": "2025-05-17T14:00:00.000",
+        "end": "2025-05-17T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "crown-clash",
+        "name": "Crown Clash",
+        "eventType": "event",
+        "heading": "Event",
+        "link": "https://leekduck.com/events/crown-clash/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-05-10-crown-clash/crown-clash.jpg",
+        "start": "2025-05-10T10:00:00.000",
+        "end": "2025-05-18T20:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "pokemon-showcase-regigigas-2025-05-17",
+        "name": "Regigigas PokéStop Showcases",
+        "eventType": "pokestop-showcase",
+        "heading": "PokéStop Showcase",
+        "link": "https://leekduck.com/events/pokemon-showcase-regigigas-2025-05-17/",
+        "image": "https://leekduck.com/assets/img/events/pokestop-showcases-default.jpg",
+        "start": "2025-05-17T10:00:00.000",
+        "end": "2025-05-18T20:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "crown-clash-taken-over",
+        "name": "Crown Clash: Taken Over",
+        "eventType": "event",
+        "heading": "Event",
+        "link": "https://leekduck.com/events/crown-clash-taken-over/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-05-14-crown-clash-taken-over/crown-clash-taken-over.jpg",
+        "start": "2025-05-14T00:00:00.000",
+        "end": "2025-05-18T23:59:59.000",
+        "extraData": null
+    },
+    {
+        "eventID": "may-max-battles-split-3-2025",
+        "name": "Max Battles - May 12 to May 19",
+        "eventType": "max-battles",
+        "heading": "Max Battles",
+        "link": "https://leekduck.com/events/may-max-battles-split-3-2025/",
+        "image": "https://leekduck.com/assets/img/events/power-spots-max-battles.jpg",
+        "start": "2025-05-12T06:00:00.000",
+        "end": "2025-05-19T06:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "max-mondays-2025-05-19",
+        "name": "Dynamax Sableye during Max Monday",
+        "eventType": "max-mondays",
+        "heading": "Max Mondays",
+        "link": "https://leekduck.com/events/max-mondays-2025-05-19/",
+        "image": "https://leekduck.com/assets/img/events/max-battles-kanto.jpg",
+        "start": "2025-05-19T18:00:00.000",
+        "end": "2025-05-19T19:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "gbl-might-and-mastery_master-league_retro-cup-great-league-edition",
+        "name": "Master League and Retro Cup: Great League Edition | Might and Mastery",
+        "eventType": "go-battle-league",
+        "heading": "GO Battle League",
+        "link": "https://leekduck.com/events/gbl-might-and-mastery_master-league_retro-cup-great-league-edition/",
+        "image": "https://leekduck.com/assets/img/events/gobattleleague-master-key.jpg",
+        "start": "2025-05-13T20:00:00.000Z",
+        "end": "2025-05-20T20:00:00.000Z",
+        "extraData": null
+    },
+    {
+        "eventID": "pokemonspotlighthour2025-05-03",
+        "name": "Poochyena Spotlight Hour",
+        "eventType": "pokemon-spotlight-hour",
+        "heading": "Pokémon Spotlight Hour",
+        "link": "https://leekduck.com/events/pokemonspotlighthour2025-05-03/",
+        "image": "https://leekduck.com/assets/img/events/pokemonspotlighthour.jpg",
+        "start": "2025-05-20T18:00:00.000",
+        "end": "2025-05-20T19:00:00.000",
+        "extraData": {
+            "spotlight": {
+                "name": "Poochyena",
+                "canBeShiny": true,
+                "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_261_00.png",
+                "bonus": "2× Evolve XP",
+                "list": [
+                    {
+                        "name": "Poochyena",
+                        "canBeShiny": true,
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_261_00.png"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "eventID": "raidhour20250521",
+        "name": "Uxie, Mesprit, and Azelf Raid Hour",
+        "eventType": "raid-hour",
+        "heading": "Raid Hour",
+        "link": "https://leekduck.com/events/raidhour20250521/",
+        "image": "https://leekduck.com/assets/img/events/raidhour.jpg",
+        "start": "2025-05-21T18:00:00.000",
+        "end": "2025-05-21T19:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "may-communitydayclassic2025",
+        "name": "Machop Community Day Classic",
+        "eventType": "community-day",
+        "heading": "Community Day",
+        "link": "https://leekduck.com/events/may-communitydayclassic2025/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-05-24-may-communitydayclassic2025/machop-community-day-classic-tease.jpg",
+        "start": "2025-05-24T14:00:00.000",
+        "end": "2025-05-24T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "uxie-mesprit-azelf-in-5-star-raid-battles-may-2025",
+        "name": "Uxie, Mesprit, and Azelf in 5-star Raid Battles",
+        "eventType": "raid-battles",
+        "heading": "Raid Battles",
+        "link": "https://leekduck.com/events/uxie-mesprit-azelf-in-5-star-raid-battles-may-2025/",
+        "image": "https://leekduck.com/assets/img/events/lakeguardians.jpg",
+        "start": "2025-05-12T10:00:00.000",
+        "end": "2025-05-25T10:00:00.000",
+        "extraData": {
+            "raidbattles": {
+                "bosses": [
+                    {
+                        "name": "Uxie",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_480_00.png",
+                        "canBeShiny": true
+                    },
+                    {
+                        "name": "Mesprit",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_481_00.png",
+                        "canBeShiny": true
+                    },
+                    {
+                        "name": "Azelf",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_482_00.png",
+                        "canBeShiny": true
+                    }
+                ],
+                "shinies": [
+                    {
+                        "name": "Uxie",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_480_00_shiny.png"
+                    },
+                    {
+                        "name": "Mesprit",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_481_00_shiny.png"
+                    },
+                    {
+                        "name": "Azelf",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_482_00_shiny.png"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "eventID": "mega-gyarados-in-mega-raids-may-2025",
+        "name": "Mega Gyarados in Mega Raids",
+        "eventType": "raid-battles",
+        "heading": "Raid Battles",
+        "link": "https://leekduck.com/events/mega-gyarados-in-mega-raids-may-2025/",
+        "image": "https://leekduck.com/assets/img/events/mega-default.jpg",
+        "start": "2025-05-12T10:00:00.000",
+        "end": "2025-05-25T10:00:00.000",
+        "extraData": {
+            "raidbattles": {
+                "bosses": [
+                    {
+                        "name": "Mega Gyarados",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_130_51.png",
+                        "canBeShiny": true
+                    }
+                ],
+                "shinies": [
+                    {
+                        "name": "Gyarados",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_130_00_shiny.png"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "eventID": "gigantamax-machamp-max-battle-day-may-2025",
+        "name": "Gigantamax Machamp Max Battle Day",
+        "eventType": "max-battles",
+        "heading": "Max Battles",
+        "link": "https://leekduck.com/events/gigantamax-machamp-max-battle-day-may-2025/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-05-25-gigantamax-machamp-max-battle-day-may-2025/gigantamax-machamp-max-battles.jpg",
+        "start": "2025-05-25T14:00:00.000",
+        "end": "2025-05-25T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "may-max-battles-split-4-2025",
+        "name": "Max Battles - May 19 to May 26",
+        "eventType": "max-battles",
+        "heading": "Max Battles",
+        "link": "https://leekduck.com/events/may-max-battles-split-4-2025/",
+        "image": "https://leekduck.com/assets/img/events/power-spots-max-battles.jpg",
+        "start": "2025-05-19T06:00:00.000",
+        "end": "2025-05-26T06:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "max-mondays-2025-05-26",
+        "name": "Dynamax Rookidee during Max Monday",
+        "eventType": "max-mondays",
+        "heading": "Max Mondays",
+        "link": "https://leekduck.com/events/max-mondays-2025-05-26/",
+        "image": "https://leekduck.com/assets/img/events/max-battles-kanto.jpg",
+        "start": "2025-05-26T18:00:00.000",
+        "end": "2025-05-26T19:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "gbl-might-and-mastery_great-league_catch-cup-great-league-edition",
+        "name": "Great League and Catch Cup: Great League Edition | Might and Mastery",
+        "eventType": "go-battle-league",
+        "heading": "GO Battle League",
+        "link": "https://leekduck.com/events/gbl-might-and-mastery_great-league_catch-cup-great-league-edition/",
+        "image": "https://leekduck.com/assets/img/events/gobattle-greatleague-key.jpg",
+        "start": "2025-05-20T20:00:00.000Z",
+        "end": "2025-05-27T20:00:00.000Z",
+        "extraData": null
+    },
+    {
+        "eventID": "pokemonspotlighthour2025-05-04",
+        "name": "Golett Spotlight Hour",
+        "eventType": "pokemon-spotlight-hour",
+        "heading": "Pokémon Spotlight Hour",
+        "link": "https://leekduck.com/events/pokemonspotlighthour2025-05-04/",
+        "image": "https://leekduck.com/assets/img/events/pokemonspotlighthour.jpg",
+        "start": "2025-05-27T18:00:00.000",
+        "end": "2025-05-27T19:00:00.000",
+        "extraData": {
+            "spotlight": {
+                "name": "Golett",
+                "canBeShiny": true,
+                "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_622_00.png",
+                "bonus": "2× Catch Stardust",
+                "list": [
+                    {
+                        "name": "Golett",
+                        "canBeShiny": true,
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_622_00.png"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "eventID": "final-strike-go-battle-week",
+        "name": "Final Strike: GO Battle Week",
+        "eventType": "event",
+        "heading": "Event",
+        "link": "https://leekduck.com/events/final-strike-go-battle-week/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-05-21-final-strike-go-battle-week/final-strike-go-battle-week.jpg",
+        "start": "2025-05-21T10:00:00.000",
+        "end": "2025-05-27T20:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "go-battle-week-might-and-mastery",
+        "name": "GO Battle Week: Might and Mastery",
+        "eventType": "event",
+        "heading": "Event",
+        "link": "https://leekduck.com/events/go-battle-week-might-and-mastery/",
+        "image": "https://leekduck.com/assets/img/events/go-battle-league-season-22-might-and-mastery.jpg",
+        "start": "2025-05-21T00:00:00.000",
+        "end": "2025-05-27T23:59:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "raidhour20250528",
+        "name": "Tapu Bulu Raid Hour",
+        "eventType": "raid-hour",
+        "heading": "Raid Hour",
+        "link": "https://leekduck.com/events/raidhour20250528/",
+        "image": "https://leekduck.com/assets/img/events/raidhour.jpg",
+        "start": "2025-05-28T18:00:00.000",
+        "end": "2025-05-28T19:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "pokemon-go-fest-2025-osaka-japan",
+        "name": "Osaka, Japan - Pokémon GO Fest 2025",
+        "eventType": "pokemon-go-fest",
+        "heading": "Pokémon GO Fest",
+        "link": "https://leekduck.com/events/pokemon-go-fest-2025-osaka-japan/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-05-29-pokemon-go-fest-2025-osaka-japan/go-fest-2025-osaka.jpg",
+        "start": "2025-05-29T09:00:00.000",
+        "end": "2025-06-01T18:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "shadow-regirock-in-shadow-raids-might-and-mastery",
+        "name": "Shadow Regirock in Shadow Raids",
+        "eventType": "raid-battles",
+        "heading": "Raid Battles",
+        "link": "https://leekduck.com/events/shadow-regirock-in-shadow-raids-might-and-mastery/",
+        "image": "https://leekduck.com/assets/img/events/events-default-img.jpg",
+        "start": "2025-05-04T06:00:00.000",
+        "end": "2025-06-01T22:00:00.000",
+        "extraData": {
+            "raidbattles": {
+                "bosses": [
+                    {
+                        "name": "Registeel",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_379_00.png",
+                        "canBeShiny": true
+                    }
+                ],
+                "shinies": [
+                    {
+                        "name": "Registeel",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_379_00_shiny.png"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "eventID": "may-max-battles-split-5-2025",
+        "name": "Max Battles - May 26 to June 2",
+        "eventType": "max-battles",
+        "heading": "Max Battles",
+        "link": "https://leekduck.com/events/may-max-battles-split-5-2025/",
+        "image": "https://leekduck.com/assets/img/events/power-spots-max-battles.jpg",
+        "start": "2025-05-26T06:00:00.000",
+        "end": "2025-06-02T06:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "mega-altaria-in-mega-raids-may-2025",
+        "name": "Mega Altaria in Mega Raids",
+        "eventType": "raid-battles",
+        "heading": "Raid Battles",
+        "link": "https://leekduck.com/events/mega-altaria-in-mega-raids-may-2025/",
+        "image": "https://leekduck.com/assets/img/events/mega-default.jpg",
+        "start": "2025-05-25T10:00:00.000",
+        "end": "2025-06-03T10:00:00.000",
+        "extraData": {
+            "raidbattles": {
+                "bosses": [
+                    {
+                        "name": "Mega Altaria",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_334_51.png",
+                        "canBeShiny": true
+                    }
+                ],
+                "shinies": [
+                    {
+                        "name": "Altaria",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pokemon_icon_334_00_shiny.png"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "eventID": "season-18-might-and-mastery",
+        "name": "Might and Mastery",
+        "eventType": "season",
+        "heading": "Season",
+        "link": "https://leekduck.com/events/season-18-might-and-mastery/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-03-04-season-18-might-and-mastery/season-18-might-and-mastery.jpg",
+        "start": "2025-03-04T10:00:00.000",
+        "end": "2025-06-03T10:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "tapu-bulu-in-5-star-raid-battles-may-2025",
+        "name": "Tapu Bulu in 5-star Raid Battles",
+        "eventType": "raid-battles",
+        "heading": "Raid Battles",
+        "link": "https://leekduck.com/events/tapu-bulu-in-5-star-raid-battles-may-2025/",
+        "image": "https://leekduck.com/assets/img/events/tapu-bulu.jpg",
+        "start": "2025-05-25T10:00:00.000",
+        "end": "2025-06-03T10:00:00.000",
+        "extraData": {
+            "raidbattles": {
+                "bosses": [
+                    {
+                        "name": "Tapu Bulu",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm787.icon.png",
+                        "canBeShiny": true
+                    }
+                ],
+                "shinies": [
+                    {
+                        "name": "Tapu Bulu",
+                        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm787.s.icon.png"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "eventID": "gbl-might-and-mastery_great-league_ultra-league_master-league-split-3",
+        "name": "Great League, Ultra League, and Master League | Might and Mastery",
+        "eventType": "go-battle-league",
+        "heading": "GO Battle League",
+        "link": "https://leekduck.com/events/gbl-might-and-mastery_great-league_ultra-league_master-league-split-3/",
+        "image": "https://leekduck.com/assets/img/events/go-battle-league-season-22-might-and-mastery.jpg",
+        "start": "2025-05-27T20:00:00.000Z",
+        "end": "2025-06-03T20:00:00.000Z",
+        "extraData": null
+    },
+    {
+        "eventID": "go-pass-may-2025",
+        "name": "GO Pass: May",
+        "eventType": "go-pass",
+        "heading": "GO Pass",
+        "link": "https://leekduck.com/events/go-pass-may-2025/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-05-06-go-pass-may-2025/go-pass-may-2025.jpg",
+        "start": "2025-05-06T10:00:00.000",
+        "end": "2025-06-03T20:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "power-up-ticket-may",
+        "name": "Power Up Ticket: May",
+        "eventType": "ticketed-event",
+        "heading": "Ticketed Event",
+        "link": "https://leekduck.com/events/power-up-ticket-may/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-05-04-power-up-ticket-may/power-up-ticket-may.jpg",
+        "start": "2025-05-04T10:00:00.000",
+        "end": "2025-06-04T10:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "pokemon-go-fest-2025-jersey-city-united-states",
+        "name": "Jersey City, United States - Pokémon GO Fest 2025",
+        "eventType": "pokemon-go-fest",
+        "heading": "Pokémon GO Fest",
+        "link": "https://leekduck.com/events/pokemon-go-fest-2025-jersey-city-united-states/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-06-06-pokemon-go-fest-2025-jersey-city-united-states/go-fest-2025-jersey-city.jpg",
+        "start": "2025-06-06T09:00:00.000",
+        "end": "2025-06-08T18:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "pokemon-go-fest-2025-paris-france",
+        "name": "Paris, France - Pokémon GO Fest 2025",
+        "eventType": "pokemon-go-fest",
+        "heading": "Pokémon GO Fest",
+        "link": "https://leekduck.com/events/pokemon-go-fest-2025-paris-france/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-06-13-pokemon-go-fest-2025-paris-france/go-fest-2025-france.jpg",
+        "start": "2025-06-13T09:00:00.000",
+        "end": "2025-06-15T18:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "june-communityday2025",
+        "name": "June Community Day",
+        "eventType": "community-day",
+        "heading": "Community Day",
+        "link": "https://leekduck.com/events/june-communityday2025/",
+        "image": "https://leekduck.com/assets/img/events/cd-default.jpg",
+        "start": "2025-06-21T14:00:00.000",
+        "end": "2025-06-21T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "pokemon-go-fest-2025-global",
+        "name": "Pokémon GO Fest 2025: Global",
+        "eventType": "pokemon-go-fest",
+        "heading": "Pokémon GO Fest",
+        "link": "https://leekduck.com/events/pokemon-go-fest-2025-global/",
+        "image": "https://leekduck.com/assets/img/events/article-images/2025/2025-06-28-pokemon-go-fest-2025-global/go-fest-global.jpg",
+        "start": "2025-06-28T10:00:00.000",
+        "end": "2025-06-29T18:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "july-communitydayclassic2025",
+        "name": "July Community Day Classic",
+        "eventType": "community-day",
+        "heading": "Community Day",
+        "link": "https://leekduck.com/events/july-communitydayclassic2025/",
+        "image": "https://leekduck.com/assets/img/events/cd-default.jpg",
+        "start": "2025-07-05T14:00:00.000",
+        "end": "2025-07-06T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "july-communityday2025",
+        "name": "July Community Day",
+        "eventType": "community-day",
+        "heading": "Community Day",
+        "link": "https://leekduck.com/events/july-communityday2025/",
+        "image": "https://leekduck.com/assets/img/events/cd-default.jpg",
+        "start": "2025-07-20T14:00:00.000",
+        "end": "2025-07-20T17:00:00.000",
+        "extraData": null
+    },
+    {
+        "eventID": "august-communityday2025",
+        "name": "August Community Day",
+        "eventType": "community-day",
+        "heading": "Community Day",
+        "link": "https://leekduck.com/events/august-communityday2025/",
+        "image": "https://leekduck.com/assets/img/events/cd-default.jpg",
+        "start": "2025-08-30T14:00:00.000",
+        "end": "2025-08-30T17:00:00.000",
+        "extraData": null
+    }
+]
