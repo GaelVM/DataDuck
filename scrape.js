@@ -3,7 +3,7 @@ const events = require('./pages/events')
 const raids = require('./pages/raids')
 const research = require('./pages/research')
 const eggs = require('./pages/eggs')
-const eggs = require('./pages/rocket')
+const rocket = require('./pages/rocket')
 
 function main()
 {
