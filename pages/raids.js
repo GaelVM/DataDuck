@@ -3,137 +3,118 @@ const jsd = require('jsdom');
 const { JSDOM } = jsd;
 const https = require('https');
 
-function get()
-{
+function get() {
     return new Promise(resolve => {
-        JSDOM.fromURL("https://leekduck.com/boss/", {
-        })
-        .then((dom) => {
+        JSDOM.fromURL("https://leekduck.com/boss/")
+            .then((dom) => {
+                const document = dom.window.document;
+                const listItems = document.querySelectorAll("#raid-list ul.list > li");
 
-            var list = dom.window.document.getElementById("raid-list").getElementsByTagName("ul")[0].childNodes;
+                let bosses = [];
+                let currentTier = "";
 
-            var bosses = []
-            var currentTier = "";
-            list.forEach (e =>
-            {
-                if (e.className == "header-li")
-                {
-                    currentTier = e.textContent;
-                }
-                else if (e.className == "boss-item")
-                {
-                    e = e.getElementsByClassName("boss-border")[0];
+                listItems.forEach(e => {
+                    if (e.classList.contains("header-li")) {
+                        const h2 = e.querySelector("h2");
+                        currentTier = h2 ? h2.textContent.trim() : "";
+                    } else if (e.classList.contains("boss-item")) {
+                        const container = e.querySelector(".boss-border");
+                        if (!container) return;
 
-                    var boss = { 
-                        name: "",
-                        tier: currentTier,
-                        canBeShiny: false,
-                        types: [],
-                        combatPower: {
-                            normal: {
-                                min: -1,
-                                max: -1
+                        const boss = {
+                            name: "",
+                            tier: currentTier,
+                            canBeShiny: false,
+                            types: [],
+                            combatPower: {
+                                normal: { min: -1, max: -1 },
+                                boosted: { min: -1, max: -1 }
                             },
-                            boosted: {
-                                min: -1,
-                                max: -1
+                            boostedWeather: [],
+                            image: ""
+                        };
+
+                        // Nombre
+                        const nameEl = container.querySelector(".boss-1 .boss-name");
+                        if (nameEl) boss.name = nameEl.textContent.trim();
+
+                        // Imagen y shiny
+                        container.querySelectorAll(".boss-img img").forEach(img => {
+                            if (img.classList.contains("shiny-icon")) {
+                                boss.canBeShiny = true;
+                            } else {
+                                boss.image = img.src;
                             }
-                        },
-                        boostedWeather: [],
-                        image: ""
-                    }
+                        });
 
-                    boss.name = e.getElementsByClassName("boss-1")[0].getElementsByClassName("boss-name")[0].textContent;
-                    
-                    var images = e.getElementsByClassName("boss-img")[0].getElementsByTagName("img");
-                    (Array.prototype.slice.call(images)).forEach(img =>
-                    {
-                        if (img.className == "shiny-icon")
-                        {
-                            boss.canBeShiny = true;
+                        // Tipos
+                        container.querySelectorAll(".boss-type img").forEach(img => {
+                            if (img.className.startsWith("type")) {
+                                boss.types.push({ name: img.title.toLowerCase(), image: img.src });
+                            }
+                        });
+
+                        // CP normal
+                        const cpText = container.querySelector(".boss-2")?.textContent.trim().replace("CP", "").trim();
+                        if (cpText && cpText.includes("-")) {
+                            const [min, max] = cpText.split(" - ");
+                            boss.combatPower.normal.min = parseInt(min);
+                            boss.combatPower.normal.max = parseInt(max);
                         }
-                        else{
-                            boss.image = img.src;
-                        }
-                    });
 
-                    e.getElementsByClassName("boss-1")[0].getElementsByClassName("boss-type")[0].childNodes.forEach(img =>
-                    {
-                        if (img && img.className && img.className.startsWith("type"))
-                        {
-                            boss.types.push({ name: img.getAttribute("title").toLowerCase(), image: img.src });
-                        }
-                    });
-
-                    var tempPower = e.getElementsByClassName("boss-2")[0].textContent.trim().substring(3);
-                    boss.combatPower.normal.min = parseInt(tempPower.split(" - ")[0]);
-                    boss.combatPower.normal.max = parseInt(tempPower.split(" - ")[1]);
-
-                    var tempBoost = e.getElementsByClassName("boss-3")[0];
-                    tempBoost.getElementsByClassName("boss-weather")[0].childNodes.forEach(img =>
-                    {
-                        if (img && img.className && img.className.startsWith("weather"))
-                        {
-                            boss.boostedWeather.push({ name: img.getAttribute("title").toLowerCase(), image: img.src });
-                        }
-                    });
-                    var tempBoostPower = tempBoost.getElementsByClassName("boosted-cp")[0].textContent.trim().substring(3);
-                    boss.combatPower.boosted.min = parseInt(tempBoostPower.split(" - ")[0]);
-                    boss.combatPower.boosted.max = parseInt(tempBoostPower.split(" - ")[1]);
-
-                    bosses.push(boss);
-                }
-            });
-
-            fs.writeFile('files/raids.json', JSON.stringify(bosses, null, 4), err => {
-                if (err) {
-                    console.error(err);
-                    return;
-                }
-            });
-            fs.writeFile('files/raids.min.json', JSON.stringify(bosses), err => {
-                if (err) {
-                    console.error(err);
-                    return;
-                }
-            });
-        }).catch(_err =>
-            {
-                console.log(_err);
-                https.get("https://raw.githubusercontent.com/GaelVM/DataDuck/data/raids.min.json", (res) =>
-                {
-                    let body = "";
-                    res.on("data", (chunk) => { body += chunk; });
-                
-                    res.on("end", () => {
-                        try
-                        {
-                            let json = JSON.parse(body);
-    
-                            fs.writeFile('files/raids.json', JSON.stringify(json, null, 4), err => {
-                                if (err) {
-                                    console.error(err);
-                                    return;
+                        // CP potenciado y climas
+                        const boostBlock = container.querySelector(".boss-3");
+                        if (boostBlock) {
+                            boostBlock.querySelectorAll(".boss-weather img").forEach(img => {
+                                if (img.className.startsWith("weather")) {
+                                    boss.boostedWeather.push({ name: img.title.toLowerCase(), image: img.src });
                                 }
+                            });
+
+                            const cpBoostText = boostBlock.querySelector(".boosted-cp")?.textContent.trim().replace("CP", "").trim();
+                            if (cpBoostText && cpBoostText.includes("-")) {
+                                const [min, max] = cpBoostText.split(" - ");
+                                boss.combatPower.boosted.min = parseInt(min);
+                                boss.combatPower.boosted.max = parseInt(max);
+                            }
+                        }
+
+                        bosses.push(boss);
+                    }
+                });
+
+                fs.writeFile('files/raids.json', JSON.stringify(bosses, null, 4), err => {
+                    if (err) console.error(err);
+                });
+                fs.writeFile('files/raids.min.json', JSON.stringify(bosses), err => {
+                    if (err) console.error(err);
+                });
+
+                resolve();
+            })
+            .catch(_err => {
+                console.log(_err);
+                https.get("https://raw.githubusercontent.com/GaelVM/DataDuck/data/raids.min.json", (res) => {
+                    let body = "";
+                    res.on("data", chunk => { body += chunk; });
+                    res.on("end", () => {
+                        try {
+                            let json = JSON.parse(body);
+                            fs.writeFile('files/raids.json', JSON.stringify(json, null, 4), err => {
+                                if (err) console.error(err);
                             });
                             fs.writeFile('files/raids.min.json', JSON.stringify(json), err => {
-                                if (err) {
-                                    console.error(err);
-                                    return;
-                                }
+                                if (err) console.error(err);
                             });
-                        }
-                        catch (error)
-                        {
+                        } catch (error) {
                             console.error(error.message);
-                        };
+                        }
                     });
-                
-                }).on("error", (error) => {
+                }).on("error", error => {
                     console.error(error.message);
                 });
             });
-    })
+    });
 }
 
-module.exports = { get }
+module.exports = { get };
