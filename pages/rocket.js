@@ -1,77 +1,95 @@
 const fs = require('fs');
-const { JSDOM } = require('jsdom');
+const jsd = require('jsdom');
+const { JSDOM } = jsd;
+const https = require('https');
 
-async function getRocketLineups() {
-    const dom = await JSDOM.fromURL("https://leekduck.com/rocket-lineups/");
-    const document = dom.window.document;
+function get() {
+    return new Promise(resolve => {
+        JSDOM.fromURL("https://leekduck.com/rocket-lineups/")
+            .then((dom) => {
+                const document = dom.window.document;
+                const cards = document.querySelectorAll(".lineup-card");
 
-    const allCards = document.querySelectorAll(".lineup-card");
-    const results = [];
+                let rocketLineups = [];
 
-    allCards.forEach(card => {
-        const lineup = {
-            lineupType: "",
-            introText: "",
-            encounterImage: "",
-            shinyPossible: false,
-            typeIcon: "",
-            pokemonLineups: []
-        };
+                cards.forEach(card => {
+                    const lineup = {
+                        lineupType: "",
+                        introText: "",
+                        encounterImage: "",
+                        shinyPossible: false,
+                        typeIcon: "",
+                        pokemonLineups: []
+                    };
 
-        // Tipo: Recluta, Líder, Giovanni...
-        const header = card.querySelector(".lineup-header");
-        if (header) {
-            lineup.lineupType = header.textContent.trim();
-        }
+                    const header = card.querySelector(".lineup-header");
+                    if (header) lineup.lineupType = header.textContent.trim();
 
-        // Texto de introducción
-        const intro = card.querySelector(".lineup-description");
-        if (intro) {
-            lineup.introText = intro.textContent.trim();
-        }
+                    const intro = card.querySelector(".lineup-description");
+                    if (intro) lineup.introText = intro.textContent.trim();
 
-        // Imagen del encuentro
-        const encounter = card.querySelector(".lineup-reward img");
-        if (encounter) {
-            lineup.encounterImage = encounter.src;
-        }
+                    const rewardImg = card.querySelector(".lineup-reward img");
+                    if (rewardImg) lineup.encounterImage = rewardImg.src;
 
-        // ¿Puede ser shiny?
-        const shiny = card.querySelector(".lineup-reward .shiny-icon");
-        if (shiny) {
-            lineup.shinyPossible = true;
-        }
+                    const shinyIcon = card.querySelector(".lineup-reward .shiny-icon");
+                    if (shinyIcon) lineup.shinyPossible = true;
 
-        // Tipo de icono (ej: veneno, agua, etc.)
-        const typeIcon = card.querySelector(".lineup-type img");
-        if (typeIcon) {
-            lineup.typeIcon = typeIcon.src;
-        }
+                    const typeImg = card.querySelector(".lineup-type img");
+                    if (typeImg) lineup.typeIcon = typeImg.src;
 
-        // Pokémon por fases (puede haber 1 a 3 sets)
-        const phases = card.querySelectorAll(".lineup-pokemon-row");
-        phases.forEach(phase => {
-            const options = [];
-            phase.querySelectorAll("img").forEach(img => {
-                options.push({
-                    name: img.getAttribute("alt") || "",
-                    image: img.src
+                    const rows = card.querySelectorAll(".lineup-pokemon-row");
+                    rows.forEach(row => {
+                        const pokes = [];
+                        row.querySelectorAll("img").forEach(img => {
+                            const name = img.getAttribute("alt") || "";
+                            const src = img.src;
+                            pokes.push({ name, image: src });
+                        });
+                        if (pokes.length > 0) {
+                            lineup.pokemonLineups.push(pokes);
+                        }
+                    });
+
+                    rocketLineups.push(lineup);
+                });
+
+                // Guarda los archivos
+                if (!fs.existsSync("files")) fs.mkdirSync("files");
+
+                fs.writeFile('files/rocket.json', JSON.stringify(rocketLineups, null, 4), err => {
+                    if (err) console.error(err);
+                });
+                fs.writeFile('files/rocket.min.json', JSON.stringify(rocketLineups), err => {
+                    if (err) console.error(err);
+                });
+
+                resolve();
+            })
+            .catch(_err => {
+                console.log(_err);
+                https.get("https://raw.githubusercontent.com/GaelVM/DataDuck/data/rocket.min.json", (res) => {
+                    let body = "";
+                    res.on("data", chunk => { body += chunk; });
+                    res.on("end", () => {
+                        try {
+                            let json = JSON.parse(body);
+                            if (!fs.existsSync("files")) fs.mkdirSync("files");
+
+                            fs.writeFile('files/rocket.json', JSON.stringify(json, null, 4), err => {
+                                if (err) console.error(err);
+                            });
+                            fs.writeFile('files/rocket.min.json', JSON.stringify(json), err => {
+                                if (err) console.error(err);
+                            });
+                        } catch (error) {
+                            console.error(error.message);
+                        }
+                    });
+                }).on("error", error => {
+                    console.error(error.message);
                 });
             });
-            if (options.length > 0) {
-                lineup.pokemonLineups.push(options);
-            }
-        });
-
-        results.push(lineup);
     });
-
-    // Guarda los resultados
-    if (!fs.existsSync("files")) fs.mkdirSync("files");
-
-    fs.writeFileSync("files/rocket-lineups.json", JSON.stringify(results, null, 4));
-    fs.writeFileSync("files/rocket-lineups.min.json", JSON.stringify(results));
-    console.log("✅ Rocket lineups guardados correctamente.");
 }
 
-getRocketLineups();
+module.exports = { get };
