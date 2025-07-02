@@ -1,7 +1,6 @@
 const fs = require('fs');
 const jsd = require('jsdom');
 const { JSDOM } = jsd;
-const https = require('https');
 
 function get() {
     return new Promise(resolve => {
@@ -53,41 +52,20 @@ function get() {
                     rocketLineups.push(lineup);
                 });
 
-                // Guarda los archivos
+                // Asegurar carpeta
                 if (!fs.existsSync("files")) fs.mkdirSync("files");
 
-                fs.writeFile('files/rocket.json', JSON.stringify(rocketLineups, null, 4), err => {
-                    if (err) console.error(err);
-                });
-                fs.writeFile('files/rocket.min.json', JSON.stringify(rocketLineups), err => {
-                    if (err) console.error(err);
-                });
+                // Escribir archivos
+                fs.writeFileSync("files/rocket.json", JSON.stringify(rocketLineups, null, 4));
+                fs.writeFileSync("files/rocket.min.json", JSON.stringify(rocketLineups));
+
+                console.log("✅ Rocket lineups guardados correctamente.");
 
                 resolve();
             })
-            .catch(_err => {
-                console.log(_err);
-                https.get("https://raw.githubusercontent.com/GaelVM/DataDuck/data/rocket.min.json", (res) => {
-                    let body = "";
-                    res.on("data", chunk => { body += chunk; });
-                    res.on("end", () => {
-                        try {
-                            let json = JSON.parse(body);
-                            if (!fs.existsSync("files")) fs.mkdirSync("files");
-
-                            fs.writeFile('files/rocket.json', JSON.stringify(json, null, 4), err => {
-                                if (err) console.error(err);
-                            });
-                            fs.writeFile('files/rocket.min.json', JSON.stringify(json), err => {
-                                if (err) console.error(err);
-                            });
-                        } catch (error) {
-                            console.error(error.message);
-                        }
-                    });
-                }).on("error", error => {
-                    console.error(error.message);
-                });
+            .catch(err => {
+                console.error("❌ Error al obtener Rocket lineups:", err);
+                resolve(); // Para evitar colgar main()
             });
     });
 }
