@@ -1,130 +1,92 @@
 const fs = require('fs');
-const jsd = require('jsdom');
-const { JSDOM } = jsd;
-const https = require('https');
+const puppeteer = require('puppeteer');
 
-function get()
-{
-    return new Promise(resolve => {
-        JSDOM.fromURL("https://leekduck.com/research/", {
-        })
-        .then((dom) => {
+async function get() {
+    const browser = await puppeteer.launch({ headless: "new" });
+    const page = await browser.newPage();
 
-            var taskNameToID = [];
-            taskNameToID["Event Tasks"] = "event";
-            taskNameToID["Catching Tasks"] = "catch";
-            taskNameToID["Throwing Tasks"] = "throw";
-            taskNameToID["Battling Tasks"] = "battle";
-            taskNameToID["Exploring Tasks"] = "explore";
-            taskNameToID["Training Tasks"] = "training";
-            taskNameToID["Team GO Rocket Tasks"] = "rocket";
-            taskNameToID["Buddy &amp; Friendship Tasks"] = "buddy";
-            taskNameToID["AR Scanning Tasks"] = "ar";
-            taskNameToID["Sponsored Tasks"] = "sponsored";
+    await page.goto('https://leekduck.com/research/', { waitUntil: 'domcontentloaded' });
 
+    // Haz clic en "All Rewards" para activar todas las tareas
+    await page.click('label[for="all-option"]');
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
-            var types = dom.window.document.querySelectorAll('.task-category');
+    const researchData = await page.evaluate(() => {
+        const research = [];
 
-            var research = [] 
-            
-            types.forEach (_e =>
-            {
-                _e.querySelectorAll(":scope > .task-list > .task-item").forEach(task => {
-                    var text = task.querySelector(":scope > .task-text").innerHTML.trim();
-                    var type = taskNameToID[_e.querySelector(":scope > h2").innerHTML.trim()];
+        const taskNameToID = {
+            "Event Tasks": "event",
+            "Catching Tasks": "catch",
+            "Throwing Tasks": "throw",
+            "Battling Tasks": "battle",
+            "Exploring Tasks": "explore",
+            "Training Tasks": "training",
+            "Team GO Rocket Tasks": "rocket",
+            "Buddy & Friendship Tasks": "buddy",
+            "AR Scanning Tasks": "ar",
+            "Sponsored Tasks": "sponsored"
+        };
 
-                    var rewards = [];
-                    
-                    task.querySelectorAll(":scope > .reward-list > .reward").forEach(r => {
-                        if (r.dataset.rewardType == "encounter")
-                        {
-                            var reward = { 
-                                name: "",
-                                image: "",
-                                canBeShiny: false,
-                                combatPower: {
-                                    min: -1,
-                                    max: -1
-                                }
-                            };
+        document.querySelectorAll('.task-category').forEach(cat => {
+            let typeLabel = cat.querySelector('h2')?.innerText.trim();
 
-                            reward.name = r.querySelector(":scope > .reward-label > span").innerHTML.trim();
-                            reward.image = r.querySelector(":scope > .reward-bubble > .reward-image").src;
+            // Mapeo especial: si es la primera categoría (normalmente eventos), forzarla a "Event Tasks"
+            if (cat === document.querySelector('.task-category')) {
+                typeLabel = "Event Tasks";
+            }
 
-                            reward.combatPower.min = parseInt(r.querySelector(":scope > .cp-values > .min-cp").innerHTML.trim().split("</div>")[1]);
-                            reward.combatPower.max = parseInt(r.querySelector(":scope > .cp-values > .max-cp").innerHTML.trim().split("</div>")[1]);
-                            reward.canBeShiny = r.querySelector(":scope > .reward-bubble > .shiny-icon") != null;
+            const type = taskNameToID[typeLabel] || "unknown";
 
-                            rewards.push(reward);
-                        }
-                    });
+            cat.querySelectorAll('.task-list .task-item').forEach(task => {
+                const text = task.querySelector('.task-text')?.innerText.trim();
+                const rewards = [];
 
-                    if (rewards.length > 0)
-                    {
-                        if (research.filter(r => r.text == text && r.type == type).length > 0)
-                        {
-                            var foundResearch = research.findIndex(fr => { return fr.text == text });
-                            rewards.forEach(rw => {
-                                research[foundResearch].rewards.push(rw);
-                            });
-                        }
-                        else
-                        {
-                            research.push({ "text": text, "type": type, "rewards": rewards});
-                        }
+                task.querySelectorAll('.reward').forEach(r => {
+                    if (r.dataset.rewardType === "encounter") {
+                        const name = r.querySelector('.reward-label span')?.innerText.trim() || "";
+                        const image = r.querySelector('.reward-image')?.src || "";
+
+                        const minCPText = r.querySelector('.min-cp')?.innerText.trim() || "";
+                        const maxCPText = r.querySelector('.max-cp')?.innerText.trim() || "";
+
+                        const min = parseInt(minCPText.match(/\d+/)?.[0] || "-1");
+                        const max = parseInt(maxCPText.match(/\d+/)?.[0] || "-1");
+
+                        const canBeShiny = r.querySelector('.shiny-icon') !== null;
+
+                        rewards.push({
+                            name,
+                            image,
+                            canBeShiny,
+                            combatPower: {
+                                min: isNaN(min) ? null : min,
+                                max: isNaN(max) ? null : max
+                            }
+                        });
                     }
                 });
-            });
 
-            fs.writeFile('files/research.json', JSON.stringify(research, null, 4), err => {
-                if (err) {
-                    console.error(err);
-                    return;
+                if (rewards.length > 0) {
+                    const existing = research.find(r => r.text === text && r.type === type);
+                    if (existing) {
+                        rewards.forEach(rw => existing.rewards.push(rw));
+                    } else {
+                        research.push({ text, type, rewards });
+                    }
                 }
             });
-            fs.writeFile('files/research.min.json', JSON.stringify(research), err => {
-                if (err) {
-                    console.error(err);
-                    return;
-                }
-            });
-        }).catch(_err =>
-            {
-                console.log(_err);
-                https.get("https://raw.githubusercontent.com/GaelVM/DataDuck/data/research.min.json", (res) =>
-                {
-                    let body = "";
-                    res.on("data", (chunk) => { body += chunk; });
-                
-                    res.on("end", () => {
-                        try
-                        {
-                            let json = JSON.parse(body);
-    
-                            fs.writeFile('files/research.json', JSON.stringify(json, null, 4), err => {
-                                if (err) {
-                                    console.error(err);
-                                    return;
-                                }
-                            });
-                            fs.writeFile('files/research.min.json', JSON.stringify(json), err => {
-                                if (err) {
-                                    console.error(err);
-                                    return;
-                                }
-                            });
-                        }
-                        catch (error)
-                        {
-                            console.error(error.message);
-                        };
-                    });
-                
-                }).on("error", (error) => {
-                    console.error(error.message);
-                });
-            });
-    })
+        });
+
+        return research;
+    });
+
+    if (!fs.existsSync('files')) fs.mkdirSync('files');
+    fs.writeFileSync('files/research.json', JSON.stringify(researchData, null, 4));
+    fs.writeFileSync('files/research.min.json', JSON.stringify(researchData));
+
+    console.log(`✅ Scrapeadas ${researchData.length} tareas de investigación.`);
+
+    await browser.close();
 }
 
-module.exports = { get }
+module.exports = { get };
