@@ -1,73 +1,68 @@
 const fs = require('fs');
-const jsd = require('jsdom');
-const { JSDOM } = jsd;
+const puppeteer = require('puppeteer');
 
-function get() {
-    return new Promise(resolve => {
-        JSDOM.fromURL("https://leekduck.com/rocket-lineups/")
-            .then((dom) => {
-                const document = dom.window.document;
-                const cards = document.querySelectorAll(".lineup-card");
+async function get() {
+    const browser = await puppeteer.launch({ headless: "new" });
+    const page = await browser.newPage();
 
-                let rocketLineups = [];
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115 Safari/537.36');
+    await page.goto('https://leekduck.com/rocket-lineups/', { waitUntil: 'domcontentloaded' });
 
-                cards.forEach(card => {
-                    const lineup = {
-                        lineupType: "",
-                        introText: "",
-                        encounterImage: "",
-                        shinyPossible: false,
-                        typeIcon: "",
-                        pokemonLineups: []
-                    };
+    await page.waitForSelector('.rocket-profile', { timeout: 30000 });
 
-                    const header = card.querySelector(".lineup-header");
-                    if (header) lineup.lineupType = header.textContent.trim();
+    const rocketLineups = await page.evaluate(() => {
+        const profiles = document.querySelectorAll(".rocket-profile");
+        const result = [];
 
-                    const intro = card.querySelector(".lineup-description");
-                    if (intro) lineup.introText = intro.textContent.trim();
+        profiles.forEach(profile => {
+            const leaderName = profile.querySelector(".name")?.textContent.trim() || "";
+            const leaderTitle = profile.querySelector(".title")?.textContent.trim() || "";
+            const quote = profile.querySelector(".quote-text")?.textContent.trim() || "";
+            const image = profile.querySelector(".photo img")?.src || "";
+            const typeIcon = profile.querySelector(".type img")?.src || "";
 
-                    const rewardImg = card.querySelector(".lineup-reward img");
-                    if (rewardImg) lineup.encounterImage = rewardImg.src;
+            const lineup = [];
+            const slots = profile.querySelectorAll(".slot");
 
-                    const shinyIcon = card.querySelector(".lineup-reward .shiny-icon");
-                    if (shinyIcon) lineup.shinyPossible = true;
+            slots.forEach(slot => {
+                const pokes = [];
+                const isEncounter = slot.classList.contains("encounter");
+                const shadowPokes = slot.querySelectorAll(".shadow-pokemon");
 
-                    const typeImg = card.querySelector(".lineup-type img");
-                    if (typeImg) lineup.typeIcon = typeImg.src;
+                shadowPokes.forEach(poke => {
+                    const name = poke.dataset.pokemon || "";
+                    const type1 = poke.dataset.type1 || "";
+                    const type2 = poke.dataset.type2 || "None";
+                    const singleWeaknesses = poke.dataset.singleWeaknesses?.split(',').filter(Boolean) || [];
+                    const doubleWeaknesses = poke.dataset.doubleWeaknesses?.split(',').filter(Boolean) || [];
+                    const shiny = poke.querySelector(".shiny-icon") !== null;
 
-                    const rows = card.querySelectorAll(".lineup-pokemon-row");
-                    rows.forEach(row => {
-                        const pokes = [];
-                        row.querySelectorAll("img").forEach(img => {
-                            const name = img.getAttribute("alt") || "";
-                            const src = img.src;
-                            pokes.push({ name, image: src });
-                        });
-                        if (pokes.length > 0) {
-                            lineup.pokemonLineups.push(pokes);
-                        }
-                    });
-
-                    rocketLineups.push(lineup);
+                    pokes.push({ name, type1, type2, singleWeaknesses, doubleWeaknesses, isEncounter, canBeShiny: shiny });
                 });
 
-                // Asegurar carpeta
-                if (!fs.existsSync("files")) fs.mkdirSync("files");
-
-                // Escribir archivos
-                fs.writeFileSync("files/rocket.json", JSON.stringify(rocketLineups, null, 4));
-                fs.writeFileSync("files/rocket.min.json", JSON.stringify(rocketLineups));
-
-                console.log("✅ Rocket lineups guardados correctamente.");
-
-                resolve();
-            })
-            .catch(err => {
-                console.error("❌ Error al obtener Rocket lineups:", err);
-                resolve(); // Para evitar colgar main()
+                if (pokes.length > 0) lineup.push(pokes);
             });
+
+            result.push({
+                leader: leaderName,
+                title: leaderTitle,
+                quote,
+                image,
+                type: typeIcon,
+                lineup
+            });
+        });
+
+        return result;
     });
+
+    if (!fs.existsSync("files")) fs.mkdirSync("files");
+    fs.writeFileSync("files/rocket.json", JSON.stringify(rocketLineups, null, 4));
+    fs.writeFileSync("files/rocket.min.json", JSON.stringify(rocketLineups));
+
+    console.log(`✅ Scrapeado ${rocketLineups.length} lineups Rocket.`);
+
+    await browser.close();
 }
 
 module.exports = { get };

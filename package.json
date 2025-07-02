@@ -13,6 +13,7 @@
   "dependencies": {
     "google-translate-api": "^2.3.0",
     "jsdom": "21.1.1",
-    "moment": "^2.29.4"
+    "moment": "^2.29.4",
+    "puppeteer": "^24.11.2"
   }
 }
