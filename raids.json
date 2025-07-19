@@ -1,0 +1,574 @@
+[
+    {
+        "name": "Shellder",
+        "tier": "Tier 1",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "water",
+                "image": "https://leekduck.com/assets/img/types/water.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 571,
+                "max": 617
+            },
+            "boosted": {
+                "min": 713,
+                "max": 771
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "rainy",
+                "image": "https://leekduck.com/assets/img/weather/rainy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm90.icon.png"
+    },
+    {
+        "name": "Ducklett",
+        "tier": "Tier 1",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "water",
+                "image": "https://leekduck.com/assets/img/types/water.png"
+            },
+            {
+                "name": "flying",
+                "image": "https://leekduck.com/assets/img/types/flying.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 447,
+                "max": 489
+            },
+            "boosted": {
+                "min": 559,
+                "max": 612
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "rainy",
+                "image": "https://leekduck.com/assets/img/weather/rainy.png"
+            },
+            {
+                "name": "windy",
+                "image": "https://leekduck.com/assets/img/weather/windy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm580.icon.png"
+    },
+    {
+        "name": "Tatsugiri (Curly)",
+        "tier": "Tier 1",
+        "canBeShiny": false,
+        "types": [
+            {
+                "name": "dragon",
+                "image": "https://leekduck.com/assets/img/types/dragon.png"
+            },
+            {
+                "name": "water",
+                "image": "https://leekduck.com/assets/img/types/water.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 1494,
+                "max": 1569
+            },
+            "boosted": {
+                "min": 1868,
+                "max": 1962
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "windy",
+                "image": "https://leekduck.com/assets/img/weather/windy.png"
+            },
+            {
+                "name": "rainy",
+                "image": "https://leekduck.com/assets/img/weather/rainy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm978.fCURLY.icon.png"
+    },
+    {
+        "name": "Tatsugiri (Droopy)",
+        "tier": "Tier 1",
+        "canBeShiny": false,
+        "types": [
+            {
+                "name": "dragon",
+                "image": "https://leekduck.com/assets/img/types/dragon.png"
+            },
+            {
+                "name": "water",
+                "image": "https://leekduck.com/assets/img/types/water.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 1494,
+                "max": 1569
+            },
+            "boosted": {
+                "min": 1868,
+                "max": 1962
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "windy",
+                "image": "https://leekduck.com/assets/img/weather/windy.png"
+            },
+            {
+                "name": "rainy",
+                "image": "https://leekduck.com/assets/img/weather/rainy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm978.fDROOPY.icon.png"
+    },
+    {
+        "name": "Tatsugiri (Stretchy)",
+        "tier": "Tier 1",
+        "canBeShiny": false,
+        "types": [
+            {
+                "name": "dragon",
+                "image": "https://leekduck.com/assets/img/types/dragon.png"
+            },
+            {
+                "name": "water",
+                "image": "https://leekduck.com/assets/img/types/water.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 1494,
+                "max": 1569
+            },
+            "boosted": {
+                "min": 1868,
+                "max": 1962
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "windy",
+                "image": "https://leekduck.com/assets/img/weather/windy.png"
+            },
+            {
+                "name": "rainy",
+                "image": "https://leekduck.com/assets/img/weather/rainy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm978.fSTRETCHY.icon.png"
+    },
+    {
+        "name": "Kingler",
+        "tier": "Tier 3",
+        "canBeShiny": false,
+        "types": [
+            {
+                "name": "water",
+                "image": "https://leekduck.com/assets/img/types/water.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 1540,
+                "max": 1616
+            },
+            "boosted": {
+                "min": 1925,
+                "max": 2020
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "rainy",
+                "image": "https://leekduck.com/assets/img/weather/rainy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm99.icon.png"
+    },
+    {
+        "name": "Gyarados",
+        "tier": "Tier 3",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "water",
+                "image": "https://leekduck.com/assets/img/types/water.png"
+            },
+            {
+                "name": "flying",
+                "image": "https://leekduck.com/assets/img/types/flying.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 1855,
+                "max": 1937
+            },
+            "boosted": {
+                "min": 2319,
+                "max": 2422
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "rainy",
+                "image": "https://leekduck.com/assets/img/weather/rainy.png"
+            },
+            {
+                "name": "windy",
+                "image": "https://leekduck.com/assets/img/weather/windy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm130.icon.png"
+    },
+    {
+        "name": "Lapras",
+        "tier": "Tier 3",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "water",
+                "image": "https://leekduck.com/assets/img/types/water.png"
+            },
+            {
+                "name": "ice",
+                "image": "https://leekduck.com/assets/img/types/ice.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 1435,
+                "max": 1509
+            },
+            "boosted": {
+                "min": 1794,
+                "max": 1886
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "rainy",
+                "image": "https://leekduck.com/assets/img/weather/rainy.png"
+            },
+            {
+                "name": "snow",
+                "image": "https://leekduck.com/assets/img/weather/snowy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm131.fCOSTUME_2020.icon.png"
+    },
+    {
+        "name": "Azumarill",
+        "tier": "Tier 3",
+        "canBeShiny": false,
+        "types": [
+            {
+                "name": "water",
+                "image": "https://leekduck.com/assets/img/types/water.png"
+            },
+            {
+                "name": "fairy",
+                "image": "https://leekduck.com/assets/img/types/fairy.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 849,
+                "max": 907
+            },
+            "boosted": {
+                "min": 1061,
+                "max": 1134
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "rainy",
+                "image": "https://leekduck.com/assets/img/weather/rainy.png"
+            },
+            {
+                "name": "cloudy",
+                "image": "https://leekduck.com/assets/img/weather/cloudy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm184.icon.png"
+    },
+    {
+        "name": "Terrakion",
+        "tier": "Tier 5",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "rock",
+                "image": "https://leekduck.com/assets/img/types/rock.png"
+            },
+            {
+                "name": "fighting",
+                "image": "https://leekduck.com/assets/img/types/fighting.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 2026,
+                "max": 2113
+            },
+            "boosted": {
+                "min": 2533,
+                "max": 2641
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "partly",
+                "image": "https://leekduck.com/assets/img/weather/partlycloudy.png"
+            },
+            {
+                "name": "cloudy",
+                "image": "https://leekduck.com/assets/img/weather/cloudy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm639.icon.png"
+    },
+    {
+        "name": "Mega Blastoise",
+        "tier": "Mega",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "water",
+                "image": "https://leekduck.com/assets/img/types/water.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": 1338,
+                "max": 1409
+            },
+            "boosted": {
+                "min": 1673,
+                "max": 1761
+            }
+        },
+        "boostedWeather": [
+            {
+                "name": "rainy",
+                "image": "https://leekduck.com/assets/img/weather/rainy.png"
+            }
+        ],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm9.fMEGA.icon.png"
+    },
+    {
+        "name": "Magnemite",
+        "tier": "Shadow Tier 1",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "electric",
+                "image": "https://leekduck.com/assets/img/types/electric.png"
+            },
+            {
+                "name": "steel",
+                "image": "https://leekduck.com/assets/img/types/steel.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": -1,
+                "max": -1
+            },
+            "boosted": {
+                "min": -1,
+                "max": -1
+            }
+        },
+        "boostedWeather": [],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm81.icon.png"
+    },
+    {
+        "name": "Cyndaquil",
+        "tier": "Shadow Tier 1",
+        "canBeShiny": false,
+        "types": [
+            {
+                "name": "fire",
+                "image": "https://leekduck.com/assets/img/types/fire.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": -1,
+                "max": -1
+            },
+            "boosted": {
+                "min": -1,
+                "max": -1
+            }
+        },
+        "boostedWeather": [],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm155.icon.png"
+    },
+    {
+        "name": "Murkrow",
+        "tier": "Shadow Tier 1",
+        "canBeShiny": true,
+        "types": [
+            {
+                "name": "dark",
+                "image": "https://leekduck.com/assets/img/types/dark.png"
+            },
+            {
+                "name": "flying",
+                "image": "https://leekduck.com/assets/img/types/flying.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": -1,
+                "max": -1
+            },
+            "boosted": {
+                "min": -1,
+                "max": -1
+            }
+        },
+        "boostedWeather": [],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm198.icon.png"
+    },
+    {
+        "name": "Spoink",
+        "tier": "Shadow Tier 1",
+        "canBeShiny": false,
+        "types": [
+            {
+                "name": "psychic",
+                "image": "https://leekduck.com/assets/img/types/psychic.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": -1,
+                "max": -1
+            },
+            "boosted": {
+                "min": -1,
+                "max": -1
+            }
+        },
+        "boostedWeather": [],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm325.icon.png"
+    },
+    {
+        "name": "Lapras",
+        "tier": "Shadow Tier 3",
+        "canBeShiny": false,
+        "types": [
+            {
+                "name": "water",
+                "image": "https://leekduck.com/assets/img/types/water.png"
+            },
+            {
+                "name": "ice",
+                "image": "https://leekduck.com/assets/img/types/ice.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": -1,
+                "max": -1
+            },
+            "boosted": {
+                "min": -1,
+                "max": -1
+            }
+        },
+        "boostedWeather": [],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm131.icon.png"
+    },
+    {
+        "name": "Piloswine",
+        "tier": "Shadow Tier 3",
+        "canBeShiny": false,
+        "types": [
+            {
+                "name": "ice",
+                "image": "https://leekduck.com/assets/img/types/ice.png"
+            },
+            {
+                "name": "ground",
+                "image": "https://leekduck.com/assets/img/types/ground.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": -1,
+                "max": -1
+            },
+            "boosted": {
+                "min": -1,
+                "max": -1
+            }
+        },
+        "boostedWeather": [],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm221.icon.png"
+    },
+    {
+        "name": "Gurdurr",
+        "tier": "Shadow Tier 3",
+        "canBeShiny": false,
+        "types": [
+            {
+                "name": "fighting",
+                "image": "https://leekduck.com/assets/img/types/fighting.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": -1,
+                "max": -1
+            },
+            "boosted": {
+                "min": -1,
+                "max": -1
+            }
+        },
+        "boostedWeather": [],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm533.icon.png"
+    },
+    {
+        "name": "Registeel",
+        "tier": "Shadow Tier 5",
+        "canBeShiny": false,
+        "types": [
+            {
+                "name": "steel",
+                "image": "https://leekduck.com/assets/img/types/steel.png"
+            }
+        ],
+        "combatPower": {
+            "normal": {
+                "min": -1,
+                "max": -1
+            },
+            "boosted": {
+                "min": -1,
+                "max": -1
+            }
+        },
+        "boostedWeather": [],
+        "image": "https://cdn.leekduck.com/assets/img/pokemon_icons/pm379.icon.png"
+    }
+]
