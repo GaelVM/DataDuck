@@ -8,81 +8,80 @@ function get() {
         JSDOM.fromURL("https://leekduck.com/boss/")
             .then((dom) => {
                 const document = dom.window.document;
-                const listItems = document.querySelectorAll("#raid-list ul.list > li");
-
                 let bosses = [];
-                let currentTier = "";
 
-                listItems.forEach(e => {
-                    if (e.classList.contains("header-li")) {
-                        const h2 = e.querySelector("h2");
-                        currentTier = h2 ? h2.textContent.trim() : "";
-                    } else if (e.classList.contains("boss-item")) {
-                        const container = e.querySelector(".boss-border");
-                        if (!container) return;
+                // Función para procesar una sección (normal o shadow)
+                function parseSection(sectionSelector, isShadow = false) {
+                    const sections = document.querySelectorAll(sectionSelector);
 
-                        const boss = {
-                            name: "",
-                            tier: currentTier,
-                            canBeShiny: false,
-                            types: [],
-                            combatPower: {
-                                normal: { min: -1, max: -1 },
-                                boosted: { min: -1, max: -1 }
-                            },
-                            boostedWeather: [],
-                            image: ""
-                        };
+                    sections.forEach(section => {
+                        const tierTitle = section.querySelector("h2.header");
+                        let currentTier = tierTitle ? tierTitle.textContent.trim() : "";
 
-                        // Nombre
-                        const nameEl = container.querySelector(".boss-1 .boss-name");
-                        if (nameEl) boss.name = nameEl.textContent.trim();
+                        section.querySelectorAll(".card").forEach(card => {
+                            const boss = {
+                                name: "",
+                                tier: currentTier,
+                                canBeShiny: false,
+                                types: [],
+                                combatPower: {
+                                    normal: { min: -1, max: -1 },
+                                    boosted: { min: -1, max: -1 }
+                                },
+                                boostedWeather: [],
+                                image: "",
+                                shadow: isShadow
+                            };
 
-                        // Imagen y shiny
-                        container.querySelectorAll(".boss-img img").forEach(img => {
-                            if (img.classList.contains("shiny-icon")) {
-                                boss.canBeShiny = true;
-                            } else {
-                                boss.image = img.src;
-                            }
-                        });
+                            // Imagen y shiny
+                            const imgEl = card.querySelector(".boss-img img");
+                            if (imgEl) boss.image = imgEl.src;
+                            if (card.querySelector(".shiny-icon")) boss.canBeShiny = true;
 
-                        // Tipos
-                        container.querySelectorAll(".boss-type img").forEach(img => {
-                            if (img.className.startsWith("type")) {
+                            // Nombre
+                            const nameEl = card.querySelector(".identity .name");
+                            if (nameEl) boss.name = nameEl.textContent.trim();
+
+                            // Tipos
+                            card.querySelectorAll(".boss-type img").forEach(img => {
                                 boss.types.push({ name: img.title.toLowerCase(), image: img.src });
-                            }
-                        });
-
-                        // CP normal
-                        const cpText = container.querySelector(".boss-2")?.textContent.trim().replace("CP", "").trim();
-                        if (cpText && cpText.includes("-")) {
-                            const [min, max] = cpText.split(" - ");
-                            boss.combatPower.normal.min = parseInt(min);
-                            boss.combatPower.normal.max = parseInt(max);
-                        }
-
-                        // CP potenciado y climas
-                        const boostBlock = container.querySelector(".boss-3");
-                        if (boostBlock) {
-                            boostBlock.querySelectorAll(".boss-weather img").forEach(img => {
-                                if (img.className.startsWith("weather")) {
-                                    boss.boostedWeather.push({ name: img.title.toLowerCase(), image: img.src });
-                                }
                             });
 
-                            const cpBoostText = boostBlock.querySelector(".boosted-cp")?.textContent.trim().replace("CP", "").trim();
-                            if (cpBoostText && cpBoostText.includes("-")) {
-                                const [min, max] = cpBoostText.split(" - ");
-                                boss.combatPower.boosted.min = parseInt(min);
-                                boss.combatPower.boosted.max = parseInt(max);
+                            // CP normal
+                            const cpText = card.querySelector(".cp-range")?.textContent.replace("CP", "").trim();
+                            if (cpText && cpText.includes("-")) {
+                                const [min, max] = cpText.split("-").map(n => parseInt(n.trim()));
+                                boss.combatPower.normal.min = min;
+                                boss.combatPower.normal.max = max;
                             }
-                        }
 
-                        bosses.push(boss);
-                    }
-                });
+                            // CP potenciado + clima
+                            const boostBlock = card.querySelector(".weather-boosted");
+                            if (boostBlock) {
+                                boostBlock.querySelectorAll(".boss-weather img").forEach(img => {
+                                    boss.boostedWeather.push({ name: img.title.toLowerCase(), image: img.src });
+                                });
 
+                                const cpBoostText = boostBlock.querySelector(".boosted-cp")?.textContent.replace("CP", "").trim();
+                                if (cpBoostText && cpBoostText.includes("-")) {
+                                    const [min, max] = cpBoostText.split("-").map(n => parseInt(n.trim()));
+                                    boss.combatPower.boosted.min = min;
+                                    boss.combatPower.boosted.max = max;
+                                }
+                            }
+
+                            bosses.push(boss);
+                        });
+                    });
+                }
+
+                // Parsear raids normales
+                parseSection(".raid-bosses .tier", false);
+
+                // Parsear shadow raids
+                parseSection(".shadow-raid-bosses .tier", true);
+
+                // Guardar archivos
                 fs.writeFile('files/raids.json', JSON.stringify(bosses, null, 4), err => {
                     if (err) console.error(err);
                 });
