@@ -1,153 +1,143 @@
-const fs = require("fs");
-const jsd = require("jsdom");
+
+const fs = require('fs');
+const jsd = require('jsdom');
 const { JSDOM } = jsd;
-const https = require("https");
+const https = require('https');
 
 function get() {
-  return new Promise((resolve) => {
-    const url = "https://leekduck.com/raid-bosses/";
+    return new Promise(resolve => {
+        JSDOM.fromURL("https://leekduck.com/raid-bosses/", {
+        })
+            .then((dom) => {
 
-    JSDOM.fromURL(url)
-      .then((dom) => {
-        const document = dom.window.document;
+                let bosses = [];
+                const grids = dom.window.document.querySelectorAll('div.grid');
 
-        const absUrl = (maybeRelative) => {
-          if (!maybeRelative) return "";
-          try {
-            return new URL(maybeRelative, url).href;
-          } catch {
-            return maybeRelative;
-          }
-        };
+                grids.forEach((grid) => {
+                    let tierHeader = grid.previousElementSibling;
+                    while (tierHeader && (tierHeader.tagName.toLowerCase() !== 'h2' || !tierHeader.getAttribute('class') || !tierHeader.getAttribute('class').includes('header'))) {
+                        tierHeader = tierHeader.previousElementSibling;
+                    }
+                    let currentTier = tierHeader ? (tierHeader.textContent.trim() || "") : "";
+                    if (!currentTier && tierHeader) {
+                        const dataTier = tierHeader.getAttribute('data-tier') || "";
+                        const tierMap = { '1': '1-Star Raids', '3': '3-Star Raids', '5': '5-Star Raids', 'mega': 'Mega Raids' };
+                        currentTier = tierMap[dataTier.toLowerCase()] || dataTier;
+                    }
 
-        const parseCpRange = (text) => {
-          // Ej: "CP 433 - 473"
-          if (!text) return { min: -1, max: -1 };
-          const cleaned = text.replace(/CP/gi, "").trim();
-          if (!cleaned.includes("-")) return { min: -1, max: -1 };
-          const [a, b] = cleaned.split("-").map((n) => parseInt(n.trim(), 10));
-          return {
-            min: Number.isFinite(a) ? a : -1,
-            max: Number.isFinite(b) ? b : -1,
-          };
-        };
+                    const cards = grid.querySelectorAll('div.card');
+                    cards.forEach((card) => {
+                            let boss = {
+                                name: "",
+                                tier: currentTier,
+                                canBeShiny: false,
+                                types: [],
+                                combatPower: {
+                                    normal: { min: -1, max: -1 },
+                                    boosted: { min: -1, max: -1 }
+                                },
+                                boostedWeather: [],
+                                image: ""
+                            };
 
-        const bosses = [];
+                            // Name
+                        const nameEl = card.querySelector('p.name') || card.querySelector('.identity .name');
+                        boss.name = nameEl ? (nameEl.textContent.trim() || "") : "";
 
-        function parseContainer(containerSelector, shadow) {
-          const container = document.querySelector(containerSelector);
-          if (!container) return;
+                            // Image
+                        boss.image = card.querySelector('div.boss-img img')?.src || "";
 
-          container.querySelectorAll(".tier").forEach((tierEl) => {
-            const tierLabel =
-              tierEl.querySelector("h2.header .tier-label")?.textContent?.trim() ||
-              tierEl.querySelector("h2.header")?.textContent?.trim() ||
-              "";
+                            // Shiny
+                        boss.canBeShiny = !!card.querySelector('div.boss-img .shiny-icon');
 
-            // opcional: nota del tier (ej: “Tatsugiri appears in your region's form”)
-            const tierNote = tierEl.querySelector("p.note")?.textContent?.trim() || "";
+                            // Types
+                        card.querySelectorAll('div.boss-type img, div.boss-type .type img').forEach((img) => {
+                            const typeName = img.getAttribute('title') || img.getAttribute('alt') || "";
+                            if (typeName) {
+                                boss.types.push({
+                                    name: typeName.toLowerCase(),
+                                    image: img.src || ""
+                                });
+                            }
+                            });
 
-            tierEl.querySelectorAll(".card").forEach((card) => {
-              const boss = {
-                name: "",
-                tier: tierLabel,
-                canBeShiny: false,
-                types: [],
-                combatPower: {
-                  normal: { min: -1, max: -1 },
-                  boosted: { min: -1, max: -1 },
-                },
-                boostedWeather: [],
-                image: "",
-                shadow,
-                // si quieres guardar notas por tier:
-                note: tierNote || undefined,
-              };
+                            // Combat Power (normal)
+                        let cpText = (card.querySelector('div.cp-range')?.textContent || "").replace(/^CP\s*/i, "").trim();
+                        let [cpMin, cpMax] = cpText.split('-').map(s => parseInt(s.trim(), 10));
+                            boss.combatPower.normal.min = cpMin || -1;
+                            boss.combatPower.normal.max = cpMax || -1;
 
-              // Imagen
-              const imgEl = card.querySelector(".boss-img img");
-              if (imgEl) boss.image = absUrl(imgEl.getAttribute("src"));
+                            // Combat Power (boosted)
+                        let boostedText = (card.querySelector('div.boosted-cp-row .boosted-cp, div.boosted-cp-row span.boosted-cp')?.textContent || "").replace(/^CP\s*/i, "").trim();
+                        let [boostMin, boostMax] = boostedText.split('-').map(s => parseInt(s.trim(), 10));
+                            boss.combatPower.boosted.min = boostMin || -1;
+                            boss.combatPower.boosted.max = boostMax || -1;
 
-              // Shiny
-              if (card.querySelector("svg.shiny-icon, .shiny-icon")) boss.canBeShiny = true;
+                            // Boosted Weather
+                        const weatherContainer = card.querySelector('div.weather-boosted') || card.querySelector('div.boss-3');
+                        (weatherContainer?.querySelectorAll('.boss-weather img, .weather-pill img') || []).forEach((img) => {
+                            let weatherName = (img.getAttribute('alt') || "").toLowerCase();
+                            if (!weatherName && img.getAttribute('src')) {
+                                const match = img.getAttribute('src').match(/(\w+)\.png$/);
+                                weatherName = match ? match[1].toLowerCase() : "";
+                            }
+                            if (weatherName) {
+                                boss.boostedWeather.push({
+                                    name: weatherName,
+                                    image: img.src || ""
+                                });
+                            }
+                            });
 
-              // Nombre
-              const nameEl = card.querySelector(".identity .name");
-              if (nameEl) boss.name = nameEl.textContent.trim();
+                            bosses.push(boss);
+                        });
+                    });
 
-              // Tipos
-              card.querySelectorAll(".boss-type img").forEach((img) => {
-                const typeName =
-                  (img.getAttribute("title") || img.getAttribute("alt") || "").trim().toLowerCase();
-                boss.types.push({
-                  name: typeName,
-                  image: absUrl(img.getAttribute("src")),
+                    fs.writeFile('files/raids.json', JSON.stringify(bosses, null, 4), err => {
+                        if (err) {
+                            console.error(err);
+                            return;
+                        }
+                    });
+                    fs.writeFile('files/raids.min.json', JSON.stringify(bosses), err => {
+                        if (err) {
+                            console.error(err);
+                            return;
+                        }
                 });
-              });
+            }).catch(_err => {
+                console.log(_err);
+                https.get("https://raw.githubusercontent.com/GaelVM/DataDuck/data/raids.min.json", (res) => {
+                    let body = "";
+                    res.on("data", (chunk) => { body += chunk; });
 
-              // CP normal
-              boss.combatPower.normal = parseCpRange(card.querySelector(".cp-range")?.textContent);
+                    res.on("end", () => {
+                        try {
+                            let json = JSON.parse(body);
 
-              // CP boosted (nuevo selector)
-              boss.combatPower.boosted = parseCpRange(
-                card.querySelector(".boosted-cp-row .boosted-cp")?.textContent
-              );
+                            fs.writeFile('files/raids.json', JSON.stringify(json, null, 4), err => {
+                                if (err) {
+                                    console.error(err);
+                                    return;
+                                }
+                            });
+                            fs.writeFile('files/raids.min.json', JSON.stringify(json), err => {
+                                if (err) {
+                                    console.error(err);
+                                    return;
+                                }
+                            });
+                        }
+                        catch (error) {
+                            console.error(error.message);
+                        };
+                    });
 
-              // Clima boosted (alt + src relativo)
-              card.querySelectorAll(".weather-boosted img").forEach((img) => {
-                const weatherName =
-                  (img.getAttribute("alt") || img.getAttribute("title") || "")
-                    .trim()
-                    .toLowerCase();
-
-                boss.boostedWeather.push({
-                  name: weatherName,
-                  image: absUrl(img.getAttribute("src")),
+                }).on("error", (error) => {
+                    console.error(error.message);
                 });
-              });
-
-              // Limpia undefined si no quieres esa key
-              if (!boss.note) delete boss.note;
-
-              bosses.push(boss);
             });
-          });
-        }
-
-        // Regular
-        parseContainer(".raid-bosses", false);
-
-        // Shadow
-        parseContainer(".shadow-raid-bosses", true);
-
-        fs.writeFileSync("files/raids.json", JSON.stringify(bosses, null, 4));
-        fs.writeFileSync("files/raids.min.json", JSON.stringify(bosses));
-
-        resolve();
-      })
-      .catch((err) => {
-        console.log(err);
-        https
-          .get("https://raw.githubusercontent.com/GaelVM/DataDuck/data/raids.min.json", (res) => {
-            let body = "";
-            res.on("data", (chunk) => (body += chunk));
-            res.on("end", () => {
-              try {
-                const json = JSON.parse(body);
-                fs.writeFileSync("files/raids.json", JSON.stringify(json, null, 4));
-                fs.writeFileSync("files/raids.min.json", JSON.stringify(json));
-              } catch (error) {
-                console.error(error.message);
-              }
-              resolve();
-            });
-          })
-          .on("error", (error) => {
-            console.error(error.message);
-            resolve();
-          });
-      });
-  });
+    })
 }
 
-module.exports = { get };
+module.exports = { get }
