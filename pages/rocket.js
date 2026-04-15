@@ -17,6 +17,8 @@ function get() {
                     name: "",
                     title: "",
                     type: "",
+                    image: "",
+                    quote: "",
                     firstPokemon: [],
                     secondPokemon: [],
                     thirdPokemon: [],
@@ -25,10 +27,14 @@ function get() {
                 let nameElement = profile.querySelector('.name');
                 let titleElement = profile.querySelector('.title');
                 let typeElement = profile.querySelector('.type img');
+                let profileImageElement = profile.querySelector('.photo img');
+                let quoteElement = profile.querySelector('.quote-text');
                 
-                lineup.name = nameElement ? nameElement.textContent.replace(/\s+/g, ' ').trim() : ""; // Scraped text contains non-breaking spaces, hence the regex replace
-                lineup.title = titleElement ? titleElement.textContent.trim() : ""; 
+                lineup.name = nameElement ? nameElement.textContent.replace(/\s+/g, ' ').trim() : "";
+                lineup.title = titleElement ? titleElement.textContent.trim() : "";
                 lineup.type = typeElement ? typeElement.src.replace('.png', '').split('/').pop().toLowerCase() : "";
+                lineup.image = profileImageElement ? profileImageElement.src : "";
+                lineup.quote = quoteElement ? quoteElement.textContent.trim() : "";
 
                 let slots = profile.querySelectorAll('.slot');
                 
@@ -93,6 +99,8 @@ function get() {
                     return;
                 }
             });
+
+            resolve();
         }).catch(_err => {
             console.log(_err);
             
@@ -103,6 +111,13 @@ function get() {
                 res.on("end", () => {
                     try {
                         let json = JSON.parse(body);
+
+                        // Por si el fallback no trae los nuevos campos
+                        json = json.map(lineup => ({
+                            image: "",
+                            quote: "",
+                            ...lineup
+                        }));
 
                         fs.writeFile('files/rocket.json', JSON.stringify(json, null, 4), err => {
                             if (err) {
@@ -116,17 +131,21 @@ function get() {
                                 return;
                             }
                         });
+
+                        resolve();
                     }
                     catch (error) {
                         console.error(error.message);
+                        resolve();
                     };
                 });
 
             }).on("error", (error) => {
                 console.error(error.message);
+                resolve();
             });
         });
     })
 }
 
-module.exports = { get }
+module.exports = { get };
