@@ -15,12 +15,14 @@ function get()
             var eggs = [];
             var currentType = "";
             var currentAdventureSync = false;
+            var currentGiftExchange = false;
             content.forEach(c =>
             {
                 if (c.tagName == "H2")
                 {
                     currentType = c.innerHTML.trim();
                     currentAdventureSync = currentType.includes("(Adventure Sync Rewards)");
+                    currentGiftExchange = currentType.includes("(From Route Gift)");
                     currentType = currentType.split(" Eggs")[0];
                 }
                 else if (c.className == "egg-list-flex")
@@ -28,7 +30,7 @@ function get()
                     c.querySelectorAll(".egg-list-item").forEach(e =>
                     {
                         var pokemon = {
-                            name: "",
+                             name: "",
                             eggType: "",
                             isAdventureSync: false,
                             image: "",
@@ -37,19 +39,36 @@ function get()
                                 min: -1,
                                 max: -1
                             },
-                            isRegional: false
+                            isRegional: false,
+                            isGiftExchange: false,
+                            rarity: 0
                         };
 
-                        pokemon.name = e.querySelector(":scope > .hatch-pkmn").innerHTML;
+                         pokemon.name = e.querySelector(".name").innerHTML || "";
                         pokemon.eggType = currentType;
                         pokemon.isAdventureSync = currentAdventureSync;
-                        pokemon.image = e.querySelector(":scope > .egg-list-img > img").src;
-                        pokemon.canBeShiny = e.querySelector(":scope > .shiny-icon") != null;
-                        pokemon.isRegional = e.querySelector(":scope > .regional-icon") != null;
+                        pokemon.image = e.querySelector(".icon img").src || "";
+                        pokemon.canBeShiny = e.querySelector(".shiny-icon") != null;
+                        pokemon.isRegional = e.querySelector(".regional-icon") != null;
+                        pokemon.isGiftExchange = currentGiftExchange;
 
-                        var combatPower = e.querySelector(":scope > .font-size-smaller").innerHTML.split('</span>')[1];
-                        pokemon.combatPower.min = parseInt(combatPower.split(' - ')[0]);
-                        pokemon.combatPower.max = parseInt(combatPower.split(' - ')[1]);
+                        var cpText = e.querySelector(".cp-range").innerHTML;
+                        var cpValue = cpText.replace('<span class="label">CP </span>', '').trim();
+                        
+                        // Logic to handle single CP value if no range is provided 
+                        if (cpValue.includes(' - ')) {
+                            pokemon.combatPower.min = parseInt(cpValue.split(' - ')[0]);
+                            pokemon.combatPower.max = parseInt(cpValue.split(' - ')[1]);
+                        } else {
+                            pokemon.combatPower.min = parseInt(cpValue);
+                            pokemon.combatPower.max = parseInt(cpValue);
+                        }
+
+                        var rarityDiv = e.querySelector(".rarity");
+                        if (rarityDiv) {
+                            var miniEggs = rarityDiv.querySelectorAll("svg.mini-egg");
+                            pokemon.rarity = miniEggs.length;
+                        }
 
                         eggs.push(pokemon);
                     });
