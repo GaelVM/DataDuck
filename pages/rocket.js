@@ -81,13 +81,13 @@ function get() {
                 lineups.push(lineup);
             });
 
-            fs.writeFile('files/rocketLineups.json', JSON.stringify(lineups, null, 4), err => {
+            fs.writeFile('files/rocket.json', JSON.stringify(lineups, null, 4), err => {
                 if (err) {
                     console.error(err);
                     return;
                 }
             });
-            fs.writeFile('files/rocketLineups.min.json', JSON.stringify(lineups), err => {
+            fs.writeFile('files/rocket.min.json', JSON.stringify(lineups), err => {
                 if (err) {
                     console.error(err);
                     return;
