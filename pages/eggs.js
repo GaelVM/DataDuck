@@ -16,6 +16,7 @@ function get()
             var currentType = "";
             var currentAdventureSync = false;
             var currentGiftExchange = false;
+            
             content.forEach(c =>
             {
                 if (c.tagName == "H2")
@@ -25,12 +26,12 @@ function get()
                     currentGiftExchange = currentType.includes("(From Route Gift)");
                     currentType = currentType.split(" Eggs")[0];
                 }
-                else if (c.className == "egg-list-flex")
+                else if (c.className == "egg-grid")
                 {
-                    c.querySelectorAll(".egg-list-item").forEach(e =>
+                    c.querySelectorAll(".pokemon-card").forEach(e =>
                     {
                         var pokemon = {
-                             name: "",
+                            name: "",
                             eggType: "",
                             isAdventureSync: false,
                             image: "",
@@ -44,7 +45,7 @@ function get()
                             rarity: 0
                         };
 
-                         pokemon.name = e.querySelector(".name").innerHTML || "";
+                        pokemon.name = e.querySelector(".name").innerHTML || "";
                         pokemon.eggType = currentType;
                         pokemon.isAdventureSync = currentAdventureSync;
                         pokemon.image = e.querySelector(".icon img").src || "";
@@ -127,3 +128,4 @@ function get()
 }
 
 module.exports = { get }
+             
