@@ -55,9 +55,16 @@ function get()
                             var eventID = link.split("/events/")[1];
                             eventID = eventID.substring(0, eventID.length - 1);
                             
+                             if (!(eventID in eventDates))
+                            {
+                                console.warn(`WARNING: Event '${eventID}' not present in events feed. Date values will be null.`);
+                            }
+                            
+
                             var eventItemWrapper = e.querySelector(":scope > .event-item-wrapper");
-                            var eventType = (eventItemWrapper.classList + "").replace("event-item-wrapper ", "");
+                            var eventType = (eventItemWrapper.classList + "").replace("event-item-wrapper ", "").replace(" skeleton-loading", "");
                             eventType = eventType.replace("é", "e");
+
 
                             var start = eventDates[eventID].start;
                             var end = eventDates[eventID].end;
