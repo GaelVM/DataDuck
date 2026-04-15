@@ -24,6 +24,9 @@ function main()
                 let bkp = JSON.parse(body);
 
                 events.forEach(e => {
+                    // get generic extra data independend from event type
+                    generic.get(e.link, e.eventID, bkp);
+                    // get event type specific extra data
                     if (e.eventType == "research-breakthrough")
                     {
                         breakthrough.get(e.link, e.eventID, bkp);
@@ -39,6 +42,10 @@ function main()
                     else if (e.eventType == "raid-battles")
                     {
                         raidbattles.get(e.link, e.eventID, bkp);
+                    }
+                    else if (e.eventType == "research")
+                    {
+                        research.get(e.link, e.eventID, bkp);
                     }
                 });
             }
