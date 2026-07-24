@@ -1,4 +1,5 @@
 const fs = require('fs');
+const ical = require('ical-generator');
 
 function main()
 {
@@ -17,21 +18,49 @@ function main()
             {
                 if (e.eventID == data.id)
                 {
+                    // add always generic data as 'generic' block in 'extraData' (available for all possible events)
+                    if (data.type == "generic")
+                    {
+                        if (e.extraData === null) {
+                            e.extraData = {};
+                        }
+                        e.extraData.generic = data.data;
+                    }
+                    // add event specific extra data. Block named as event type name
                     if (data.type == "research-breakthrough")
                     {
-                        e.extraData = { breakthrough: data.data }
+                        if (e.extraData === null) {
+                            e.extraData = {};
+                        }
+                        e.extraData.breakthrough = data.data;
                     }
                     else if (data.type == "pokemon-spotlight-hour")
                     {
-                        e.extraData = { spotlight: data.data }
+                        if (e.extraData === null) {
+                            e.extraData = {};
+                        }
+                        e.extraData.spotlight = data.data
                     }
                     else if (data.type == "community-day")
                     {
-                        e.extraData = { communityday: data.data }
+                        if (e.extraData === null) {
+                            e.extraData = {};
+                        }
+                        e.extraData.communityday = data.data
                     }
                     else if (data.type == "raid-battles")
                     {
-                        e.extraData = { raidbattles: data.data }
+                        if (e.extraData === null) {
+                            e.extraData = {};
+                        }
+                        e.extraData.raidbattles = data.data
+                    }
+                    else if (data.type == "promo-codes")
+                    {
+                        if (e.extraData === null) {
+                            e.extraData = {};
+                        }
+                        e.extraData.promocodes = data.data
                     }
                 }
             });
@@ -50,10 +79,85 @@ function main()
             }
         });
 
+        generateCalendars(events);
+
         fs.rm("files/temp", { recursive: true }, (err) => {
             if (err) { throw err; }
         });
     });
 }
 
-main();
+function generateCalendars(events) {
+    const leekDuckFavIconUrl = "https://leekduck.com/assets/img/favicon/favicon-16x16.png";
+    const generatorName = "ScrapedDuck";
+    const generatorUrl = "https://github.com/GaelVM/DataDuck";
+    const icalMeta = [
+        ["x-origin", "https://leekduck.com/events/"],
+        ["x-generator", generatorName],
+        ["x-generator-url", generatorUrl],
+    ];
+
+    const icals = new Map();
+    icals.set("all", ical.default({ name: "Pokémon Go — All Events", description: "All Pokémon Go events.", x: icalMeta }));
+
+    events.forEach(e => {
+
+        if (!icals.has(e.eventType)) {
+            icals.set(e.eventType, ical.default({ name: `Pokémon Go — ${e.heading}`, description: `Pokémon Go ${e.heading} events.`, x: icalMeta }));
+        }
+
+        const calAll = icals.get("all");
+        const calType = icals.get(e.eventType);
+
+        // ensure the timestamps are all in zulu time
+        const startZulu = new Date(e.start).toISOString();
+        const endZulu = new Date(e.end).toISOString();
+        const calEventTitle = `${e.heading} — ${e.name}`
+
+        const calEvent = {
+            start: startZulu,
+            end: endZulu,
+            id: `scraped-duck-${e.eventID}`,
+            summary: calEventTitle,
+            description: `<a href="${e.link}">${e.name}</a>`,
+            categories: [{ name: e.heading }],
+            url: e.link,
+            organizer: { name: "LeekDuck c/o ScrapedDuck" },
+            x: [
+                ["IMAGE", e.image],
+                ["X-GOOGLE-CALENDAR-CONTENT-TITLE", calEventTitle],
+                ["X-GOOGLE-CALENDAR-CONTENT-ICON", leekDuckFavIconUrl],
+                ["X-GOOGLE-CALENDAR-CONTENT-URL", e.image],
+                ["X-GOOGLE-CALENDAR-CONTENT-TYPE", "image/*"],
+            ],
+        };
+
+        calAll.createEvent(calEvent);
+        calType.createEvent(calEvent);
+    });
+
+
+    if (!fs.existsSync('files/calendars'))
+        fs.mkdirSync('files/calendars');
+
+    for (const [key, cal] of icals) {
+        cal.prodId({ company: generatorName, product: "Scraped LeekDuck Events", language: "EN" })
+
+        fs.writeFile(`files/calendars/${key}.ics`, cal.toString(), err => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+        });
+    }
+}
+
+try
+{
+    main();
+}
+catch (e)
+{
+    console.error("ERROR: " + e);
+    process.exit(1);
+}
