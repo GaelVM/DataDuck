@@ -1,3 +1,4 @@
+
 const fs = require('fs');
 const moment = require('moment');
 const jsd = require('jsdom');
@@ -49,31 +50,29 @@ function get()
                             var image = e.querySelector(":scope > .event-item-wrapper > .event-item > .event-img-wrapper > img").src;
                             if (image.includes("cdn-cgi"))
                             {
-                                image = "https://leekduck.com/assets/" + image.split("/assets/")[1];
+                                image = "https://cdn.leekduck.com/assets/" + image.split("/assets/")[1];
                             }
                             var link = e.href;
                             var eventID = link.split("/events/")[1];
                             eventID = eventID.substring(0, eventID.length - 1);
-                            
-                             if (!(eventID in eventDates))
+
+                            if (!(eventID in eventDates))
                             {
                                 console.warn(`WARNING: Event '${eventID}' not present in events feed. Date values will be null.`);
                             }
                             
-
                             var eventItemWrapper = e.querySelector(":scope > .event-item-wrapper");
                             var eventType = (eventItemWrapper.classList + "").replace("event-item-wrapper ", "").replace(" skeleton-loading", "");
                             eventType = eventType.replace("é", "e");
 
+                            var start = eventDates[eventID]?.start || null;
+                            var end = eventDates[eventID]?.end || null;
 
-                            var start = eventDates[eventID].start;
-                            var end = eventDates[eventID].end;
-
-                            if (start.length > 24)
+                            if (start?.length > 24)
                             {
                                 start = "" + new Date(Date.parse(start)).toISOString();
                             }
-                            if (end.length > 24)
+                            if (end?.length > 24)
                             {
                                 end = "" + new Date(Date.parse(end)).toISOString();
                             }
