@@ -3,7 +3,7 @@ const events = require('./pages/events')
 const raids = require('./pages/raids')
 const research = require('./pages/research')
 const eggs = require('./pages/eggs')
-const rocket = require('./pages/rocket')
+const rocketLineups = require('./pages/rocketLineups')
 
 function main()
 {
@@ -14,7 +14,15 @@ function main()
     raids.get();
     research.get();
     eggs.get();
-    rocket.get();
+    rocketLineups.get();
 }
 
-main();
+try
+{
+    main();
+}
+catch (e)
+{
+    console.error("ERROR: " + e);
+    process.exit(1);
+}
