@@ -1,0 +1,37 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//ScrapedDuck//Scraped LeekDuck Events//EN
+NAME:Pokémon Go — Research
+X-WR-CALNAME:Pokémon Go — Research
+X-WR-CALDESC:Pokémon Go Research events.
+BEGIN:VEVENT
+UID:scraped-duck-pokemon-world-championships-2026-timed-research-twitch-dr
+ ops
+SEQUENCE:0
+DTSTAMP:20260822T195248Z
+DTSTART:20260828T160000Z
+DTEND:20260831T030000Z
+SUMMARY:Research — Twitch Drops for 2026 Pokémon World Championships
+DESCRIPTION:<a href="https://leekduck.com/events/pokemon-world-championshi
+ ps-2026-timed-research-twitch-drops/">Twitch Drops for 2026 Pokémon World
+  Championships</a>
+ORGANIZER;CN="LeekDuck c/o ScrapedDuck":
+CATEGORIES:Research
+URL;VALUE=URI:https://leekduck.com/events/pokemon-world-championships-2026
+ -timed-research-twitch-drops/
+IMAGE:https://cdn.leekduck.com/assets/img/events/article-images/2026/2026-
+ 08-28-pokemon-world-championships-2026-timed-research-twitch-drops/2026-wo
+ rlds-go-drops.jpg
+X-GOOGLE-CALENDAR-CONTENT-TITLE:Research — Twitch Drops for 2026 Pokémo
+ n World Championships
+X-GOOGLE-CALENDAR-CONTENT-ICON:https://leekduck.com/assets/img/favicon/fav
+ icon-16x16.png
+X-GOOGLE-CALENDAR-CONTENT-URL:https://cdn.leekduck.com/assets/img/events/a
+ rticle-images/2026/2026-08-28-pokemon-world-championships-2026-timed-resea
+ rch-twitch-drops/2026-worlds-go-drops.jpg
+X-GOOGLE-CALENDAR-CONTENT-TYPE:image/*
+END:VEVENT
+X-ORIGIN:https://leekduck.com/events/
+X-GENERATOR:ScrapedDuck
+X-GENERATOR-URL:https://github.com/GaelVM/DataDuck
+END:VCALENDAR
