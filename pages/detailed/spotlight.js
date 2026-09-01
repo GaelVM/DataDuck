@@ -43,22 +43,40 @@ function get(url, id, bkp)
                     return;
                 }
             });
-        }).catch(_err =>
+       }).catch(err => {
+    console.error(`❌ Error obteniendo Spotlight ${id}:`, err);
+
+    for (var i = 0; i < bkp.length; i++)
+    {
+        if (bkp[i].eventID == id)
         {
-            for (var i = 0; i < bkp.length; i++)
+            console.log(`🔎 Backup encontrado para ${id}:`);
+            console.log(JSON.stringify(bkp[i], null, 2));
+
+            if (!bkp[i].extraData?.spotlight?.data)
             {
-                if (bkp[i].eventID == id)
-                {
-                    fs.writeFile(`files/temp/${id}.json`, JSON.stringify({ id: id, type: "pokemon-spotlight-hour", data: bkp[i].extraData.spotlight.data }), err => {
-                        if (err) {
-                            console.error(err); 
-                            return;
-                        }
-                    });
-                }
+                console.error(
+                    `❌ El backup ${id} no contiene extraData.spotlight.data`
+                );
+                return;
             }
-        });
-    })
-}
+
+            fs.writeFile(
+                `files/temp/${id}.json`,
+                JSON.stringify({
+                    id: id,
+                    type: "pokemon-spotlight-hour",
+                    data: bkp[i].extraData.spotlight.data
+                }),
+                err => {
+                    if (err) {
+                        console.error(err);
+                    }
+                }
+            );
+        }
+    }
+}) 
+
 
 module.exports = { get }
