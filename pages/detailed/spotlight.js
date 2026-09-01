@@ -33,50 +33,62 @@ function get(url, id, bkp)
                     name: p.querySelector(":scope > .pkmn-name").innerHTML,
                     canBeShiny: p.querySelector(":scope > .shiny-icon") != null,
                     image: p.querySelector(":scope > .pkmn-list-img > img").src
-                }
+                };
+
                 spotlight.list.push(pokemon);
             });
-
-            fs.writeFile(`files/temp/${id}.json`, JSON.stringify({ id: id, type: "pokemon-spotlight-hour", data: spotlight }), err => {
-                if (err) {
-                    console.error(err);
-                    return;
-                }
-            });
-       }).catch(err => {
-    console.error(`❌ Error obteniendo Spotlight ${id}:`, err);
-
-    for (var i = 0; i < bkp.length; i++)
-    {
-        if (bkp[i].eventID == id)
-        {
-            console.log(`🔎 Backup encontrado para ${id}:`);
-            console.log(JSON.stringify(bkp[i], null, 2));
-
-            if (!bkp[i].extraData?.spotlight?.data)
-            {
-                console.error(
-                    `❌ El backup ${id} no contiene extraData.spotlight.data`
-                );
-                return;
-            }
 
             fs.writeFile(
                 `files/temp/${id}.json`,
                 JSON.stringify({
                     id: id,
                     type: "pokemon-spotlight-hour",
-                    data: bkp[i].extraData.spotlight.data
+                    data: spotlight
                 }),
                 err => {
                     if (err) {
                         console.error(err);
+                        return;
                     }
                 }
             );
-        }
-    }
-}) 
 
+        }).catch(err => {
 
-module.exports = { get }
+            console.error(`❌ Error obteniendo Spotlight ${id}:`, err);
+
+            for (var i = 0; i < bkp.length; i++)
+            {
+                if (bkp[i].eventID == id)
+                {
+                    console.log(`🔎 Backup encontrado para ${id}:`);
+                    console.log(JSON.stringify(bkp[i], null, 2));
+
+                    if (!bkp[i].extraData?.spotlight?.data)
+                    {
+                        console.error(
+                            `❌ El backup ${id} no contiene extraData.spotlight.data`
+                        );
+                        return;
+                    }
+
+                    fs.writeFile(
+                        `files/temp/${id}.json`,
+                        JSON.stringify({
+                            id: id,
+                            type: "pokemon-spotlight-hour",
+                            data: bkp[i].extraData.spotlight.data
+                        }),
+                        err => {
+                            if (err) {
+                                console.error(err);
+                            }
+                        }
+                    );
+                }
+            }
+        });
+    });
+}
+
+module.exports = { get };
